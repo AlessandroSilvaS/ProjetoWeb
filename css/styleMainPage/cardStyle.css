@@ -1,0 +1,35 @@
+.cards-main-container{
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 200px);
+    gap: 20px;
+}
+.card-course{
+    width: 200px;
+    height: 250px;
+    border: solid 1px #000;
+    border-radius: 5px;
+}
+.card-course .card-Img img{
+    width: 198px;
+    height: 130px;
+    border-radius: 5px;
+}
+.card-course .card-Body .title-course{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+}
+.card-course .card-Footer{
+    width: 80px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 0 auto;
+    text-align: center;
+}
+.card-course .card-Footer .card-Link{
+    text-decoration: none;
+    color: #000;
+}

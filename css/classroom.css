@@ -1,0 +1,105 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Estilo da Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .navbar-btn {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .navbar-logo {
+    font-size: 1.5em;
+  }
+  
+  /* Estilo do Conteúdo Principal */
+  .main-content {
+    padding: 20px;
+    min-height: calc(
+      100vh - 50px
+    ); /* Ajusta a altura para ocupar o restante da tela, menos a navbar */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+  }
+  
+  /* Estilo da Seção de Gerenciamento de Perfis */
+  .profile-management {
+    width: 100%;
+    max-width: 1200px; /* Limita a largura máxima da seção */
+    padding: 20px;
+    background-color: #f4f4f4; /* Fundo da seção para destacar */
+    border: 1px solid #ddd; /* Borda ao redor da seção */
+    border-radius: 5px; /* Bordas arredondadas */
+  }
+  
+  .profile-management h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center; /* Centraliza o título */
+  }
+  
+  .table-container {
+    display: flex;
+    justify-content: center; /* Centraliza a tabela horizontalmente */
+  }
+  
+  .profile-table {
+    width: 100%;
+    border-collapse: collapse;
+    max-width: 1000px; /* Limita a largura máxima da tabela */
+  }
+  
+  .profile-table th,
+  .profile-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .profile-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .profile-table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .profile-table a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .profile-table a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Adicionar espaçamento entre linhas da tabela */
+  .profile-table tbody tr {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .profile-table tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .profile-table tbody tr:last-of-type {
+    border-bottom: none;
+  }

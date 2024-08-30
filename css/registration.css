@@ -1,0 +1,87 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Estilo da Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .navbar-btn {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .navbar-logo {
+    font-size: 1.5em;
+  }
+  
+  /* Estilo do Conteúdo Principal */
+  .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(
+      100vh - 50px
+    ); /* Ajusta a altura para ocupar o restante da tela, menos a navbar */
+    padding: 20px;
+  }
+  
+  .registration-box {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px; /* Limita a largura máxima da caixa */
+  }
+  
+  .registration-box h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  
+  .registration-box form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .registration-box label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .registration-box input,
+  .registration-box select {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1em;
+  }
+  
+  .registration-box button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  .registration-box button:hover {
+    background-color: #0056b3;
+  }
