@@ -1,15 +1,21 @@
 <?php
-session_start(); // Inicia a sessão para manter o estado do menu
+session_start(); // Inicia a sessão para manter o estado dos menus
 
-// Verifica se o botão foi clicado
+// Verifica se o botão foi clicado para o menu principal
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['toggleMenu'])) {
         $_SESSION['showMenu'] = !isset($_SESSION['showMenu']) || !$_SESSION['showMenu'];
     }
+
+    // Verifica se o botão foi clicado para o menu dropdown
+    if (isset($_POST['toggleMenuDrop'])) {
+        $_SESSION['showMenuDrop'] = !isset($_SESSION['showMenuDrop']) || !$_SESSION['showMenuDrop'];
+    }
 }
 
-// Define o estado do menu
+// Define o estado dos menus
 $menuVisible = isset($_SESSION['showMenu']) && $_SESSION['showMenu'];
+$menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop'];
 ?>
 
 <!DOCTYPE html>
@@ -23,10 +29,9 @@ $menuVisible = isset($_SESSION['showMenu']) && $_SESSION['showMenu'];
 <body>
     <!-- Navbar -->
     <nav class="navbar">
-        
         <form method="post" action="">
             <button class="toggle-button" type="submit" name="toggleMenu">
-                <?php echo $menuVisible ? 'Ocultar Menu' : 'Mostrar Menu'; ?>
+                <?php echo $menuVisible ? 'Ocultar Menu Principal' : 'Mostrar Menu Principal'; ?>
             </button>
         </form>
         <div class="navbar-logo">Logo</div>
@@ -43,13 +48,22 @@ $menuVisible = isset($_SESSION['showMenu']) && $_SESSION['showMenu'];
 
     <!-- Sidebar -->
     <aside class="sidebar">
-        <div class="sidebar-section">
-            <h2><a href="#">Título 1</a></h2>
-            <h3><a href="#">Subtítulo 1</a></h3>
-        </div>
-        <div class="sidebar-section">
-            <h2><a href="#">Título 2</a></h2>
-            <h3><a href="#">Subtítulo 2</a></h3>
+        <!-- Menu Dropdown -->
+        <div class="container">
+            <form method="post" action="">
+                <button class="toggle-button" type="submit" name="toggleMenuDrop">
+                    <?php echo $menuDropVisible ? 'Ocultar Menu Dropdown' : 'Mostrar Menu Dropdown'; ?>
+                </button>
+            </form>
+
+            <!-- Menu em forma de lista -->
+            <div class="menu" style="display: <?php echo $menuDropVisible ? 'block' : 'none'; ?>;">
+                <ul>
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                </ul>
+            </div>
         </div>
     </aside>
 
@@ -101,5 +115,6 @@ $menuVisible = isset($_SESSION['showMenu']) && $_SESSION['showMenu'];
             </div>
         </section>
     </main>
+    <script src="scripts.js"></script>
 </body>
 </html>
