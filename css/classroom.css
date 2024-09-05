@@ -6,7 +6,9 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
+  body{
+    font-family: 'Hind' , serif;
+  }
   /* Estilo da Navbar */
   .navbar {
     display: flex;
@@ -15,7 +17,6 @@
     background-color: rgb(39, 90, 255);
     color: #fff;
     padding: 10px;
-    font-family: 'Hind' , serif;
   }
   
   .navbar-btn {
@@ -40,12 +41,14 @@
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
   }
+ 
   
   /* Estilo da Seção de Gerenciamento de Perfis */
   .profile-management {
+   
     width: 100%;
     max-width: 1200px; /* Limita a largura máxima da seção */
-    padding: 20px;
+    padding: 30px;
     background-color: #f4f4f4; /* Fundo da seção para destacar */
     border: 1px solid #ddd; /* Borda ao redor da seção */
     border-radius: 5px; /* Bordas arredondadas */
@@ -58,6 +61,7 @@
   }
   
   .table-container {
+    
     display: flex;
     justify-content: center; /* Centraliza a tabela horizontalmente */
   }
@@ -66,17 +70,19 @@
     width: 100%;
     border-collapse: collapse;
     max-width: 1000px; /* Limita a largura máxima da tabela */
+    margin-left: 65px;
   }
   
   .profile-table th,
   .profile-table td {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
   }
   
   .profile-table th {
-    background-color: #f4f4f4;
+    background-color: rgb(39, 90, 255);
+    color: white;
   }
   
   .profile-table img {
