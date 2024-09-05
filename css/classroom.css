@@ -1,4 +1,6 @@
 /* Reset básico */
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -10,9 +12,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: rgb(39, 90, 255);
     color: #fff;
     padding: 10px;
+    font-family: 'Hind' , serif;
   }
   
   .navbar-btn {

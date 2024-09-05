@@ -39,7 +39,7 @@
               <td>João Silva</td>
               <td>joao.silva@example.com</td>
               <td>31/12/2024</td>
-              <td><a href="#">Editar</a></td>
+              <td><a href="#">Editar</a> <a href="#">Excluir </a> </td>
             </tr>
             <tr>
               <td>
@@ -51,7 +51,7 @@
               <td>Maria Oliveira</td>
               <td>maria.oliveira@example.com</td>
               <td>15/11/2024</td>
-              <td><a href="#">Editar</a></td>
+              <td><a href="#">Editar</a> <a href="#">Excluir</td>
             </tr>
             <!-- Adicione mais linhas conforme necessário -->
           </tbody>
