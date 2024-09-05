@@ -37,8 +37,7 @@
     min-height: calc(
       100vh - 50px
     ); /* Ajusta a altura para ocupar o restante da tela, menos a navbar */
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
+    display: flex; 
     align-items: center; /* Centraliza verticalmente */
   }
  
@@ -46,7 +45,7 @@
   /* Estilo da Seção de Gerenciamento de Perfis */
   .profile-management {
    
-    width: 100%;
+    width:1000px;
     max-width: 1200px; /* Limita a largura máxima da seção */
     padding: 30px;
     background-color: #f4f4f4; /* Fundo da seção para destacar */
@@ -67,7 +66,7 @@
   }
   
   .profile-table {
-    width: 100%;
+    width: 800px;
     border-collapse: collapse;
     max-width: 1000px; /* Limita a largura máxima da tabela */
     margin-left: 65px;
