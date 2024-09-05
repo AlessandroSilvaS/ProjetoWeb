@@ -14,7 +14,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(39, 90, 255);
+    background-color: #275aff;
     color: #fff;
     padding: 10px;
   }
@@ -44,19 +44,20 @@
   
   /* Estilo da Seção de Gerenciamento de Perfis */
   .profile-management {
-   
     width:1000px;
     max-width: 1200px; /* Limita a largura máxima da seção */
     padding: 30px;
     background-color: #f4f4f4; /* Fundo da seção para destacar */
     border: 1px solid #ddd; /* Borda ao redor da seção */
     border-radius: 5px; /* Bordas arredondadas */
+    margin-bottom: 90px;
   }
   
   .profile-management h1 {
     font-size: 1.8em;
     margin-bottom: 20px;
     text-align: center; /* Centraliza o título */
+    color:#275aff;
   }
   
   .table-container {
@@ -69,7 +70,7 @@
     width: 800px;
     border-collapse: collapse;
     max-width: 1000px; /* Limita a largura máxima da tabela */
-    margin-left: 65px;
+    
   }
   
   .profile-table th,
@@ -91,14 +92,26 @@
   }
   
   .profile-table a {
-    color: #007bff;
+    color:white;
     text-decoration: none;
+    padding: 5px 13px;
+    border-radius: 5px;
   }
-  
-  .profile-table a:hover {
-    text-decoration: underline;
+  .a1{
+    background-color: rgb(0, 182, 0);
   }
-  
+  .a1:hover{
+    transition: .5s;
+    background-color: rgb(2, 173, 2);
+  }
+ 
+  .a2{
+    background-color: rgb(252, 71, 71);
+  }
+  .a2:hover{
+    transition:.5s;
+    background-color: rgb(237, 56, 56);
+  }
   /* Adicionar espaçamento entre linhas da tabela */
   .profile-table tbody tr {
     border-bottom: 1px solid #ddd;

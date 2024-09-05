@@ -18,7 +18,7 @@
         <form action="">
             <label for="user" class="main-label">Usuário</label>
             <br>
-            <input type="text" name=user class="main-input" >
+            <input type="text" name=user class="main-input"  >
             <i class="bi bi-envelope-fill"></i>
             <br>
             <label for="password" class="main-label">Senha</label>
