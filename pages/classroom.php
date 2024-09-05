@@ -9,9 +9,19 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar">
-      <button class="navbar-btn">Botão</button>
-      <div class="navbar-logo">Logo</div>
+ 
+      <div class="navbar-logo"><img src="../images/user.jpeg" alt="logo" width="40px" style="border-radius:50px; margin-right:20px; margin-top: 5px;"></div>
     </nav>
+    <div class="dropdown">
+  <button class="btn drop" type="button">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
 
     <!-- Conteúdo Principal -->
     <main class="main-content">
