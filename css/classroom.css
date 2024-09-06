@@ -34,6 +34,7 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  border-radius: 10px;
 }
 
 /* The dropdown container */
@@ -52,11 +53,14 @@
   background-color: inherit;
   font-family: inherit; /* Important for vertical align on mobile phones */
   margin: 0; /* Important for vertical align on mobile phones */
+  border-radius: 10px;
 }
 
 /* Add a red background color to navbar links on hover */
 .navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
+  transition: .5s;
+  background-color: #1507d6;
+  border: none;
 }
 
 /* Dropdown content (hidden by default) */
@@ -103,7 +107,7 @@
   
   /* Estilo da Seção de Gerenciamento de Perfis */
   .profile-management {
-    width:1000px;
+    width:860px;
     max-width: 1200px; /* Limita a largura máxima da seção */
     padding: 30px;
     background-color: #f4f4f4; /* Fundo da seção para destacar */
@@ -112,6 +116,10 @@
     margin-bottom: 90px;
   }
   
+  section {
+    display: flex;
+    justify-content: center;
+  }
   .profile-management h1 {
     font-size: 1.8em;
     margin-bottom: 20px;
@@ -182,4 +190,9 @@
   
   .profile-table tbody tr:last-of-type {
     border-bottom: none;
+  }
+
+  .animated{
+    width: 700px;
+    margin-left: 190px;
   }
