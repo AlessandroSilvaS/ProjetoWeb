@@ -17,58 +17,77 @@
     background-color: #275aff;
     color: #fff;
     padding: 10px;
-    margin: 0;
+   
   }
   
-
-  /* Estilo para o botão do dropdown */
-.btn.drop {
-  background-color: #007bff; /* Cor de fundo do botão */
-  color: #fff; /* Cor do texto */
-  border: none; /* Remove a borda padrão */
-  border-radius: 4px; /* Cantos arredondados */
-  padding: 10px 20px; /* Espaçamento interno */
-  font-size: 16px; /* Tamanho da fonte */
-  cursor: pointer; /* Cursor de mão ao passar o mouse */
-  transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+  /* Navbar container */
+.navbar {
+  overflow: hidden;
+  font-family: Arial;
 }
 
-/* Estilo para o botão do dropdown ao passar o mouse */
-.btn.drop:hover {
-  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
-/* Estilo para o menu do dropdown */
-.dropdown-menu {
-  background-color: #ffffff; /* Cor de fundo do menu */
-  border: 1px solid #ddd; /* Borda ao redor do menu */
-  border-radius: 4px; /* Cantos arredondados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra do menu */
-  margin: 0; /* Remove a margem padrão */
-  padding: 0; /* Remove o preenchimento padrão */
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
 }
 
-/* Estilo para os itens do dropdown */
-.dropdown-item {
-  color: #212529; /* Cor do texto dos itens */
-  padding: 10px 20px; /* Espaçamento interno dos itens */
-  text-decoration: none; /* Remove o sublinhado */
-  display: block; /* Faz o item ocupar toda a largura disponível */
-  transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
 }
 
-/* Estilo para os itens do dropdown ao passar o mouse */
-.dropdown-item:hover {
-  background-color: #f8f9fa; /* Cor de fundo ao passar o mouse */
-  color: #16181b; /* Cor do texto ao passar o mouse */
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
 }
 
-/* Estilo para o item ativo do dropdown */
-.dropdown-item.active {
-  background-color: #007bff; /* Cor de fundo do item ativo */
-  color: #fff; /* Cor do texto do item ativo */
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
   
   
   /* Estilo do Conteúdo Principal */
