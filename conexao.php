@@ -2,13 +2,15 @@
 
     $host="localhost";
     $user ="root";
-    $pass ="bdjmf";
+    $pass ="";
     $dbname = "dbCursos_Alunos";
 
-    try{
-        $conn = new PDO("mysql:host=$host; dbname". $dbname , $user, $pass);
-    }catch(PDOException $error){
-        echo "ERRO de conexão Erro Gerado ". $error->getmessage();
+    try {
+        // Conectar ao banco de dados com a string de conexão correta
+        $conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+    } catch (PDOException $error) {
+        echo "Erro de conexão: " . $error->getMessage();
     }
-
 

@@ -18,6 +18,9 @@
 --
 -- Table structure for table `intervencao_aluno_e_endereco`
 --
+CREATE DATABASE dbCursos_Alunos;
+
+USE dbCursos_Alunos;
 
 DROP TABLE IF EXISTS `intervencao_aluno_e_endereco`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -30,7 +33,7 @@ CREATE TABLE `intervencao_aluno_e_endereco` (
   KEY `fk_tb_aluno_has_tb_end_tb_aluno1_idx` (`tb_aluno_id_aluno`),
   CONSTRAINT `fk_tb_aluno_has_tb_end_tb_aluno1` FOREIGN KEY (`tb_aluno_id_aluno`) REFERENCES `tb_aluno` (`id_aluno`),
   CONSTRAINT `fk_tb_aluno_has_tb_end_tb_end1` FOREIGN KEY (`tb_end_id_end`) REFERENCES `tb_end` (`id_end`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,7 +60,7 @@ CREATE TABLE `intervencao_caduser_e_endereco` (
   KEY `fk_tb_caduser_has_tb_end_tb_caduser_idx` (`tb_caduser_id_caduser`),
   CONSTRAINT `fk_tb_caduser_has_tb_end_tb_caduser` FOREIGN KEY (`tb_caduser_id_caduser`) REFERENCES `tb_caduser` (`id_caduser`),
   CONSTRAINT `fk_tb_caduser_has_tb_end_tb_end1` FOREIGN KEY (`tb_end_id_end`) REFERENCES `tb_end` (`id_end`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,7 +87,7 @@ CREATE TABLE `intervencao_curso_e_aluno` (
   KEY `fk_tb_curso_has_tb_aluno_tb_curso1_idx` (`tb_curso_id_curso`),
   CONSTRAINT `fk_tb_curso_has_tb_aluno_tb_aluno1` FOREIGN KEY (`tb_aluno_id_aluno`) REFERENCES `tb_aluno` (`id_aluno`),
   CONSTRAINT `fk_tb_curso_has_tb_aluno_tb_curso1` FOREIGN KEY (`tb_curso_id_curso`) REFERENCES `tb_curso` (`id_curso`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,7 +114,7 @@ CREATE TABLE `intervencao_curso_e_caduser` (
   KEY `fk_tb_curso_has_tb_caduser_tb_curso1_idx` (`tb_curso_id_curso`),
   CONSTRAINT `fk_tb_curso_has_tb_caduser_tb_caduser1` FOREIGN KEY (`tb_caduser_id_caduser`) REFERENCES `tb_caduser` (`id_caduser`),
   CONSTRAINT `fk_tb_curso_has_tb_caduser_tb_curso1` FOREIGN KEY (`tb_curso_id_curso`) REFERENCES `tb_curso` (`id_curso`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,6 +129,8 @@ UNLOCK TABLES;
 --
 -- Table structure for table `tb_aluno`
 --
+
+
 
 DROP TABLE IF EXISTS `tb_aluno`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -145,7 +150,7 @@ CREATE TABLE `tb_aluno` (
   UNIQUE KEY `aluno_cpf_UNIQUE` (`aluno_cpf`),
   UNIQUE KEY `aluno_email_UNIQUE` (`aluno_email`),
   UNIQUE KEY `aluno_telefone_UNIQUE` (`aluno_telefone`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,7 +182,7 @@ CREATE TABLE `tb_caduser` (
   UNIQUE KEY `caduser_email_UNIQUE` (`caduser_email`),
   UNIQUE KEY `id_caduser_UNIQUE` (`id_caduser`),
   UNIQUE KEY `caduser_telefone_UNIQUE` (`caduser_telefone`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,7 +209,7 @@ CREATE TABLE `tb_curso` (
   `curso_duracao` int NOT NULL,
   PRIMARY KEY (`id_curso`),
   UNIQUE KEY `id_curso_UNIQUE` (`id_curso`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -235,7 +240,7 @@ CREATE TABLE `tb_end` (
   `end_cep` varchar(8) NOT NULL,
   PRIMARY KEY (`id_end`),
   UNIQUE KEY `id_end_UNIQUE` (`id_end`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

@@ -1,5 +1,6 @@
 <?php
-    include_once "../conexao.php"
+session_start();
+    include_once '../conexao.php'
 ?>
 <!DOCTYPE html>
 <html lang="pt_br">
@@ -12,15 +13,39 @@
 </head>
 <body>
     <div class="pai">
-<div class="box">
-    <img src="../gif/login.svg" alt="">
-        </div>
+    <div class="box">
+        <img src="../gif/login.svg " class="login-image">
+    </div>
+    
     <div class="container-main">
+    <?php
+    $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+          if(!empty($dados['SendLogin'])){
+            
+            $query_user = "SELECT id_aluno,aluno_nome,aluno_senha FROM tb_aluno WHERE aluno_nome =:username   LIMIT 1";
+
+            $result_user = $conn-> prepare($query_user);
+            $result_user -> bindParam(':username', $dados['username'], PDO::PARAM_STR);
+
+            $result_user -> execute();
+
+            if(($result_user) AND ($result_user->rowCount() !=0)){
+                $row_user = $result_user-> fetch((PDO::FETCH_ASSOC));
+            }else{
+                    $_SESSION['msg'] ="ERRO: Usuário ou Senha invalidos!";
+            }
+          } 
+          if(isset($_SESSION['msg'])){
+                echo  $_SESSION['msg'];
+                unset($_SESSION['msg']);
+                
+          }
+    ?>
   
         <form action="" method ="post">
             <label for="username" class="main-label">Usuário</label>
             <br>
-            <input type="text" name=username class="main-input"  >
+            <input type="text" name="username" class="main-input"  >
             <i class="bi bi-envelope-fill"></i>
             <br>
             <label for="password" class="main-label">Senha</label>
@@ -41,47 +66,8 @@
                     <label for="typeUser">Diretor</label>
                 </div>
             </div>
-            <input type="submit" value="ENTRAR" class="submit-button">
+            <input type="submit" value="ENTRAR" class="submit-button" name = "SendLogin">
         </form>
-        <?php
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                if (isset($_POST['username']) && isset($_POST['password'])) {
-                    $username = $_POST['username'];
-                    $password = $_POST['password'];
-
-                    try {
-                        // Prepare a consulta para buscar o usuário
-                        $sql = "SELECT * FROM tb_aluno WHERE aluno_nome = :username";
-                        $stmt = $conn->prepare($sql);
-                        // Bind do parâmetro :username
-                        $stmt->bindParam(':username', $username);
-                        $stmt->execute();
-                        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                        if ($user && password_verify($password, $user['password_hash'])) {
-                            // Login bem-sucedido
-                            session_start();
-                            $_SESSION['user_id'] = $user['id'];
-                            $_SESSION['username'] = $user['aluno_nome']; // Ajustado para refletir o campo correto
-                            header('Location: ../index.php'); // Página de sucesso após o login
-                            exit();
-                        } else {
-                            // Falha no login
-                            echo 'Usuário ou senha inválidos.';
-                        }
-                    } catch (PDOException $e) {
-                        echo "Erro na consulta: " . $e->getMessage();
-                    }
-                } else {
-                    echo 'Usuário e senha são necessários.';
-                }
-            } else {
-                // Caso o acesso ao script não seja via POST
-                echo 'Método de solicitação inválido.';
-            }
-            ?>
-
-
         <p>Esqueceu sua senha? <a href="#" class="change-password">clique aqui</a></p>
     </div>
     </div>
