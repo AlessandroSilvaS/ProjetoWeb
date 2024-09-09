@@ -50,6 +50,7 @@ body {
 .container-main form .main-label {
     margin: 25px;
     font-size: 25px;
+    
 }
 
 .container-main form .main-input {
@@ -93,9 +94,6 @@ body {
     position: absolute;
     margin-left: -30px;
     margin-top: 27px;
-}
-form label{
-    text-align: left;
 }
 
 /* Responsividade */
@@ -145,7 +143,7 @@ form label{
     }
 
     .container-main {
-        width: 70%;
+        width: 60%;
         margin: 0;
         padding: 20px;
     }
