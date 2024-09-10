@@ -2,7 +2,7 @@
 
     $host="localhost";
     $user ="root";
-    $pass ="";
+    $pass ="bdjmf";
     $dbname = "dbCursos_Alunos";
 
     try {
@@ -14,3 +14,4 @@
         echo "Erro de conexão: " . $error->getMessage();
     }
 
+    

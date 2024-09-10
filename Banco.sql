@@ -6,6 +6,8 @@
 -- Tempo de geração: 09/09/2024 às 23:38
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
+CREATE DATABASE bdCursos_Alunos;
+USE bdCursos_Alunos;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;

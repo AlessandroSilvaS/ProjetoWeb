@@ -28,7 +28,7 @@ if (!empty($dados['SendLogin'])) {
     } elseif ($userType === 'professor') {
         $query_user = "SELECT id_caduser, caduser_name, caduser_senha, caduser_email FROM tb_caduser WHERE caduser_email = :username LIMIT 1";
     } else { // $userType === 'diretor'
-        $query_user = "SELECT id_diretor, nome_diretor, senha_diretor,  email_diretor FROM tb_diretor WHERE email_diretor  = :username LIMIT 1";
+        $query_user = "SELECT id_diretor, nome_diretor, senha_diretor, email_diretor FROM tb_diretor WHERE email_diretor = :username LIMIT 1";
     }
     
     $result_user = $conn->prepare($query_user);
@@ -37,7 +37,9 @@ if (!empty($dados['SendLogin'])) {
 
     if ($result_user && $result_user->rowCount() != 0) {
         $row_user = $result_user->fetch(PDO::FETCH_ASSOC);
-        if (password_verify($password, $row_user['aluno_senha'] ?? $row_user['caduser_senha'] ?? $row_user['senha_diretor'])) {
+        // Verifique a senha usando password_verify
+        $storedPasswordHash = $row_user['aluno_senha'] ?? $row_user['caduser_senha'] ?? $row_user['senha_diretor'];
+        if (password_verify($password, $storedPasswordHash)) {
             if ($userType === 'aluno') {
                 $_SESSION['id_aluno'] = $row_user['id_aluno'];
                 $_SESSION['aluno_nome'] = $row_user['aluno_nome'];
@@ -48,7 +50,7 @@ if (!empty($dados['SendLogin'])) {
                 header("Location: classroom.php");
             } elseif ($userType === 'diretor') {
                 $_SESSION['id_diretor'] = $row_user['id_diretor'];
-                $_SESSION['diretor_name'] = $row_user['diretor_name'];
+                $_SESSION['diretor_name'] = $row_user['nome_diretor'];
                 header("Location: registration.php");
             }
             exit();
@@ -68,6 +70,8 @@ if (isset($_SESSION['msg'])) {
     echo $_SESSION['msg'];
     unset($_SESSION['msg']);
 }
+
+
 ?>
 
 <!DOCTYPE html>
