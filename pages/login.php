@@ -33,8 +33,7 @@ if (!empty($dados['SendLogin'])) {
     
     $result_user = $conn->prepare($query_user);
     $result_user->bindParam(':username', $username, PDO::PARAM_STR);
-    $result_user->execute();
-
+    $result_user->execute();yjy
     if ($result_user && $result_user->rowCount() != 0) {
         $row_user = $result_user->fetch(PDO::FETCH_ASSOC);
         // Verifique a senha usando password_verify
