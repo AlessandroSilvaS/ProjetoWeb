@@ -39,18 +39,22 @@ if (!empty($dados['SendLogin'])) {
         $row_user = $result_user->fetch(PDO::FETCH_ASSOC);
         // Verifique a senha usando password_verify
         $storedPasswordHash = $row_user['aluno_senha'] ?? $row_user['caduser_senha'] ?? $row_user['senha_diretor'];
+        
         if (password_verify($password, $storedPasswordHash)) {
             if ($userType === 'aluno') {
                 $_SESSION['id_aluno'] = $row_user['id_aluno'];
                 $_SESSION['aluno_nome'] = $row_user['aluno_nome'];
+                $_SESSION['aluno_password'] = $storedPasswordHash;
                 header("Location: ../index.php");
             } elseif ($userType === 'professor') {
                 $_SESSION['id_caduser'] = $row_user['id_caduser'];
                 $_SESSION['caduser_name'] = $row_user['caduser_name'];
+                $_SESSION['caduser_senha']= $storedPasswordHash;
                 header("Location: classroom.php");
             } elseif ($userType === 'diretor') {
                 $_SESSION['id_diretor'] = $row_user['id_diretor'];
                 $_SESSION['diretor_name'] = $row_user['nome_diretor'];
+                $_SESSION ['diretor_senha'] = $storedPasswordHash;
                 header("Location: registration.php");
             }
             exit();
@@ -81,6 +85,7 @@ if (isset($_SESSION['msg'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../css/styleLogin.css">
+    <link rel="icon" href="../images/icon.webp">
     <title>Acesse Sua Conta</title>
 </head>
 <body>

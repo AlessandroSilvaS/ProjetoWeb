@@ -7,6 +7,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gerenciamento de Perfis</title>
+    <link rel="icon" href="../images/icon.webp">
     <link rel="stylesheet" href="../css/classroom.css" />
   </head>
   <body>
@@ -32,16 +33,30 @@
     <main class="main-content">
       <!-- Seção de Gerenciamento de Perfis -->
       <section>
+
+
         
       <div class="profile-management">
         <h1>Gerenciamento de Perfis</h1>
         <table class="profile-table">
-          <thead>
+
+        <?php
+        $select = "SELECT * FROM tb_aluno ORDER BY id_aluno DESC";
+            try {
+                $result = $conn->prepare($select);
+                $cont = 1;
+                $result->execute();
+
+                $contar = $result->rowCount();
+                if ($contar > 0) {
+                    while ($show = $result->FETCH(PDO::FETCH_OBJ)) {
+            ?>
+        <thead>
             <tr>
               <th>Foto</th>
               <th>Nome</th>
               <th>Email</th>
-              <th>Data de Vencimento</th>
+              <th>Cursos status</th>
               <th>Ação</th>
             </tr>
           </thead>
@@ -53,26 +68,20 @@
                   alt="Foto do Usuário"
                 />
               </td>
-              <td>João Silva</td>
-              <td>joao.silva@example.com</td>
-              <td>31/12/2024</td>
-              <td><a  class="a1" href="#">Editar</a> <a class="a2" href="#">Excluir </a> </td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src="https://via.placeholder.com/50"
-                  alt="Foto do Usuário"
-                />
-              </td>
-              <td>Maria Oliveira</td>
-              <td>maria.oliveira@example.com</td>
-              <td>15/11/2024</td>
-              <td><a class="a1 "href="#">Editar</a> <a class="a2" href="#">Excluir</td>
-            </tr>
+              <td><?php echo $show-> aluno_nome;?></td>
+              <td><?php echo $show-> aluno_email;?></td>
+              <td><?php echo $show -> curso_status;?></td>
+              <td><a  class="a1" href="#">Editar</a> <a class="a2" href="delcontato.php?idDel=<?php echo $show->id_aluno;?>"  onclick="return confirm('Deseja remover o contato :(')"title="Remover Contato" >Excluir </a> </td>
             <!-- Adicione mais linhas conforme necessário -->
           </tbody>
-        </table>
+          <?php
+                  }
+              }
+          } catch (PDOException $e) {
+              echo '<strong>ERRO DE PDO= </strong>' . $e->getMessage();
+          }
+          ?>
+       </table>
         </div>
 
         

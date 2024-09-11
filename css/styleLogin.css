@@ -13,7 +13,6 @@ body {
 
 .pai {
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 100vh;
     flex-wrap: wrap;
@@ -24,11 +23,10 @@ body {
     background-color: rgb(39, 90, 255);
     width: 50%;
     height: 100%;
-    margin-right: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    padding-left:10px ;
 }
 
 .container-main {
@@ -39,8 +37,7 @@ body {
     background-color: white;
     box-shadow: 0 3px 3px #949393;
     text-align: center;
-    margin-left: 41px;
-    margin-right: 100px;
+   margin-left: 250px;
 }
 
 .container-main form {
