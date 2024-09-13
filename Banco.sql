@@ -91,7 +91,7 @@ CREATE TABLE `tb_aluno` (
 
 INSERT INTO `tb_aluno` (`id_aluno`, `aluno_nome`, `aluno_nascimento`, `aluno_email`, `aluno_senha`, `aluno_cpf`, `aluno_genero`, `aluno_telefone`, `curso_status`) VALUES
 (1, 'Remerson Felipe', '2007-03-07', 'remersonfelipe123@gmail.com', '448790', '49520509562', 'masculino', '8599204425', 'ativo'),
-(3, 'Samara', '2007-08-02', 'samara@gmail.com', '$2y$10$jRi6HnZ5gZmYqHiErMq2yOPNKuE6fAGNpjN9PFi.ZrZRt9o.OLwJq', '1234567891', 'F', '(85) 992590860', 'Em andamento');
+(2, 'Samara', '2007-08-02', 'samara@gmail.com', '$2y$10$jRi6HnZ5gZmYqHiErMq2yOPNKuE6fAGNpjN9PFi.ZrZRt9o.OLwJq', '1234567891', 'F', '(85) 992590860', 'Em andamento');
 
 -- --------------------------------------------------------
 

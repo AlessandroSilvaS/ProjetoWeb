@@ -16,17 +16,11 @@
     <div class="navbar">
   <a href="../index.php">Home</a>
   <div class="dropdown">
-    <button class="dropbtn">Dropdown
-      <i class="fa fa-caret-down"></i>
+    <button class="dropbtn">Cadastro de alunos
     </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
   </div>
 </div>
-      <div class="navbar-logo"><img src="../images/user.jpeg" alt="logo" width="40px" style="border-radius:50px; margin-right:20px; margin-top: 5px;"></div>
+      <div class="navbar-logo"><img src="../assets/logo.png" alt="logo" width="50px" style="border-radius:50px; margin-right:20px; margin-top: 5px;"></div>
     </nav>
 
     <!-- Conteúdo Principal -->
