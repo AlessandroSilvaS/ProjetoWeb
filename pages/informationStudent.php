@@ -25,6 +25,7 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página com Perfil</title>
     <link rel="stylesheet" href="../css/informationStudent.css" />
+    
 </head>
 <body>
     <!-- Navbar -->
@@ -36,7 +37,7 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
         </form>
         <div class="navbar-logo">Logo</div>
 
-        <!-- Menu em forma de lista -->
+        <!-- Menu Principal (Horizontal) -->
         <div class="menu" id="myMenu" style="display: <?php echo $menuVisible ? 'block' : 'none'; ?>;">
             <ul>
                 <li><a href="#">Item 1</a></li>
@@ -46,26 +47,31 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
         </div>
     </nav>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <!-- Menu Dropdown -->
-        <div class="container">
-            <form method="post" action="">
-                <button class="toggle-button" type="submit" name="toggleMenuDrop">
-                    <?php echo $menuDropVisible ? 'Ocultar Menu Dropdown' : 'Mostrar Menu Dropdown'; ?>
-                </button>
-            </form>
-
-            <!-- Menu em forma de lista -->
-            <div class="menu" style="display: <?php echo $menuDropVisible ? 'block' : 'none'; ?>;">
-                <ul>
-                    <li><a href="#">Item 1</a></li>
-                    <li><a href="#">Item 2</a></li>
-                    <li><a href="#">Item 3</a></li>
+  <aside class="sidebar">
+    <!-- Menu Lateral -->
+    <div class="menu">
+        <ul>
+            <li class="menu-item" id="item1">
+                <a href="#">01. Criatividade e inovação</a>
+                <ul class="submenu">
+                    <li><a href="#">01. Vídeo 01: O que é criatividade</a></li>
+                    <li><a href="#">02. Vídeo 02: Estimulando criatividade</a></li>
                 </ul>
-            </div>
-        </div>
-    </aside>
+            </li>
+            <li class="menu-item" id="item2">
+                <a href="#">02. Empreendedorismo</a>
+                <ul class="submenu">
+                    <li><a href="#">01. Vídeo 01: O que é empreendedorismo?</a></li>
+                    <li><a href="#">02. Casos de sucesso</a></li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="#">03. Geração de Ideias</a>
+            </li>
+        </ul>
+    </div>
+</aside>
+
 
     <!-- Conteúdo Principal -->
     <main class="main-content">
@@ -115,6 +121,6 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
             </div>
         </section>
     </main>
-    <script src="scripts.js"></script>
+    <script src="../js/scripts.js"></script>
 </body>
 </html>
