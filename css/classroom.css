@@ -158,7 +158,7 @@
     border-radius: 50%;
   }
   
-  .profile-table a {
+  .profile-table a{
     color:white;
     text-decoration: none;
     padding: 5px 13px;
@@ -172,10 +172,14 @@
     background-color: rgb(2, 173, 2);
   }
  
-  .a2{
+  form button.a2{
     background-color: rgb(252, 71, 71);
+    color: white;
+    padding: 10px 13px;
+    border-radius: 5px;
+    border: none;
   }
-  .a2:hover{
+  form button.a2:hover{
     transition:.5s;
     background-color: rgb(237, 56, 56);
   }

@@ -37,15 +37,14 @@ body {
     background-color: white;
     box-shadow: 0 3px 3px #949393;
     text-align: center;
-   margin-left: 250px;
+    margin-left: 250px;
 }
 
 .container-main form {
     width: 100%;
 }
 
-.container-main form .main-label {
-    margin: 25px;
+.container-main form label.main-label {
     font-size: 25px;
     
 }
@@ -193,7 +192,10 @@ body {
     max-width: 100%;
     height: auto;
 }
-
- 
+div.alert.alert-danger, div.alert.alert-warning, div.alert.alert-primary{
+        padding: 10px; 
+        margin-top: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 
