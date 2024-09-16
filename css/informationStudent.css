@@ -43,17 +43,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000; /* Garante que o menu fique sobre outros elementos */
 }
-.menusb {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  padding: 10px;
-  position: absolute;
-  top: 60px; /* Abaixo do botão */
-  left: 20px;
-  width: 200px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Garante que o menu fique sobre outros elementos */
-}
+
 
 .menu ul {
   list-style: none;
@@ -93,10 +83,9 @@
 /* Estilo do Menu dentro da Sidebar */
 .sidebar .menu {
   display: block; /* Menu sempre visível */
-  width: 100%; /* Ocupa a largura total da sidebar */
   padding: 0; /* Remove padding para fazer o menu ocupar toda a largura */
-  height: 100%; /* Ocupa a altura total da sidebar */
   overflow-y: auto; /* Permite rolagem vertical */
+  
 }
 
 .sidebar .menu ul {
