@@ -2,8 +2,8 @@
 
     $host="localhost";
     $user ="root";
-    $pass ="bdjmf";
-    $dbname = "dbCursos_Alunos";
+    $pass ="";
+    $dbname = "bdCursos_Alunos";
 
     try {
         // Conectar ao banco de dados com a string de conexão correta

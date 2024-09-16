@@ -93,6 +93,7 @@ body {
 }
 
 /* Responsividade */
+
 @media (max-width: 992px) {
     .pai {
         justify-content: center;
@@ -106,8 +107,8 @@ body {
 
     .container-main {
         width: 45%;
-        margin: 20px;
-        margin-right: 70px;
+        margin: 10px;
+        margin-right: 50px;
     }
     .bi.bi-envelope-fill, .bi.bi-incognito{
         margin-top: 27px;
@@ -182,6 +183,9 @@ body {
     }
     .container-main {
         width: 70%; /* Garante que o formulário use a largura disponível */
+    }
+    .login-image{
+        display: none;
     }
 }
 /* Estilo geral para a imagem e o container */

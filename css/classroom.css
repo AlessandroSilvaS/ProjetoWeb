@@ -1,4 +1,4 @@
-/* Reset básico */
+
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 * {
@@ -37,62 +37,12 @@
   border-radius: 10px;
 }
 
-/* The dropdown container */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
 
-/* Dropdown button */
-.dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
-  border-radius: 10px;
-}
 
-/* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
-  transition: .5s;
-  background-color: #1507d6;
-  border: none;
-}
 
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
 
-/* Links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
 
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-  
   
   /* Estilo do Conteúdo Principal */
   .main-content {
@@ -107,13 +57,13 @@
   
   /* Estilo da Seção de Gerenciamento de Perfis */
   .profile-management {
-    width:860px;
+    width:795px;
     max-width: 1200px; /* Limita a largura máxima da seção */
-    padding: 30px;
+    padding: 20px;
     background-color: #f4f4f4; /* Fundo da seção para destacar */
     border: 1px solid #ddd; /* Borda ao redor da seção */
     border-radius: 5px; /* Bordas arredondadas */
-    margin-bottom: 90px;
+    
   }
   
   section {
@@ -134,9 +84,10 @@
   }
   
   .profile-table {
-    width: 800px;
+    width: 750px;
     border-collapse: collapse;
     max-width: 1000px; /* Limita a largura máxima da tabela */
+    font-size: 15px;
     
   }
   
@@ -144,6 +95,7 @@
   .profile-table td {
     border: 1px solid #ddd;
     padding: 15px;
+    font-size: 13px;
     text-align: center;
   }
   
@@ -157,13 +109,17 @@
     height: 50px;
     border-radius: 50%;
   }
-  
+  .btn-group{
+    display: flex;
+    gap: 5px;
+  }
   .profile-table a{
     color:white;
     text-decoration: none;
-    padding: 5px 13px;
+    padding: 5px 8px;
     border-radius: 5px;
   }
+
   .a1{
     background-color: rgb(0, 182, 0);
   }
@@ -175,7 +131,7 @@
   form button.a2{
     background-color: rgb(252, 71, 71);
     color: white;
-    padding: 10px 13px;
+    padding: 9px 7px;
     border-radius: 5px;
     border: none;
   }
@@ -183,7 +139,7 @@
     transition:.5s;
     background-color: rgb(237, 56, 56);
   }
-  /* Adicionar espaçamento entre linhas da tabela */
+
   .profile-table tbody tr {
     border-bottom: 1px solid #ddd;
   }
@@ -200,3 +156,101 @@
     width: 700px;
     margin-left: 190px;
   }
+
+.pagination {
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination .page-item {
+  display: inline-block;
+}
+
+.pagination .page-link {
+  display: inline-block;
+  padding: 2px 12px;
+  margin: 0;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+}
+
+.pagination .page-link:hover {
+  background-color: #e9ecef;
+  color: #0056b3;
+  text-decoration: none;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #6c757d;
+  background-color: #fff;
+  border-color: #dee2e6;
+  pointer-events: none;
+}
+
+.pagination .page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.pagination .page-item.disabled .page-link:hover,
+.pagination .page-item.active .page-link:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+
+.pesquisas_btn {
+  background-color: rgb(39, 90, 255);
+  border-color: rgb(39, 90, 255);
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.pesquisas_btn:hover {
+  background-color: rgb(19, 72, 247);
+  border-color: rgb(19, 72, 247);
+}
+
+footer{
+  background-color: black;
+  color: white;
+  height: 95px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.bi.bi-github{
+  font-size: 1.3em;
+  color: white;
+}

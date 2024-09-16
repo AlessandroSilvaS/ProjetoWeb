@@ -3,11 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09/09/2024 às 23:38
+-- Tempo de geração: 16/09/2024 às 02:08
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
-CREATE DATABASE bdCursos_Alunos;
-USE bdCursos_Alunos;
+
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `dbcursos_alunos`
+-- Banco de dados: `bdCursos_Alunos`
 --
 
 -- --------------------------------------------------------
@@ -82,16 +82,21 @@ CREATE TABLE `tb_aluno` (
   `aluno_cpf` varchar(11) NOT NULL,
   `aluno_genero` varchar(20) NOT NULL,
   `aluno_telefone` varchar(45) DEFAULT NULL,
-  `curso_status` varchar(45) NOT NULL
+  `curso_status` varchar(45) NOT NULL,
+  `foto_aluno` varchar(220) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `tb_aluno`
 --
 
-INSERT INTO `tb_aluno` (`id_aluno`, `aluno_nome`, `aluno_nascimento`, `aluno_email`, `aluno_senha`, `aluno_cpf`, `aluno_genero`, `aluno_telefone`, `curso_status`) VALUES
-(1, 'Remerson Felipe', '2007-03-07', 'remersonfelipe123@gmail.com', '448790', '49520509562', 'masculino', '8599204425', 'ativo'),
-(2, 'Samara', '2007-08-02', 'samara@gmail.com', '$2y$10$jRi6HnZ5gZmYqHiErMq2yOPNKuE6fAGNpjN9PFi.ZrZRt9o.OLwJq', '1234567891', 'F', '(85) 992590860', 'Em andamento');
+INSERT INTO `tb_aluno` (`id_aluno`, `aluno_nome`, `aluno_nascimento`, `aluno_email`, `aluno_senha`, `aluno_cpf`, `aluno_genero`, `aluno_telefone`, `curso_status`, `foto_aluno`) VALUES
+(2, 'Samara', '2007-08-02', 'samara@gmail.com', '$2y$10$ZC2eRu5tak25GVY1fcuVH.wofh84oMistHTOltNZCL0lOgndkGBDS', '1234567891', 'F', '(85) 992590860', 'Em andamento', '../user/rapunzel.jpg'),
+(4, 'Pedro Lucas', '2007-03-06', 'pedrowisk@hotmail.com', '$2y$10$wahkCLO4aIjbkJJVvoStb.Ai5S/EFVNyCi8T0SO5osZDyQcqKZJd6', '38458780836', 'M', '(85)997658433', 'Finalizado', '../user/toji.jpg'),
+(5, 'Alecsander', '2007-02-08', 'aleckgogoboy@gmail.com', '$2y$10$ULm9q5a4Vpcs2PF2tNuEdeuS/UsyyCe4VbPP7aKks.IUWOi.5Rwru', '4637438498', 'M', '(85)997654866', 'Em andamento', NULL),
+(7, 'Alice Martins', '2007-08-23', 'alice@gmail.com', '$2y$10$JcMvHuorV1D5J9lNHV7dD.NXtiobcGCyHQvudbn9CNnsQvSS4Qbf.', '55649754812', 'F', '(85)534832837', 'Finalizado', '../user/barbie.jpg'),
+(8, 'Rermeson Felipe', '2007-11-05', 'rermesonfelipe@gmail.com', '$2y$10$oylzaGUiP7fS6hL7D/Vr0uKFsbot91d2iN6.7AUlDhaQi/jn48G/S', '4649483721', 'M', NULL, 'Ativo', '../user/3e03bd8848a55e7c643f42a7233895f3.jpg'),
+(9, 'Ermeson Ramos', '2007-05-18', 'ermeson18@gmail.com', '$2y$10$RCjMxDUJ1JbWbaE3v6qGhehGjdqDa7B7mB1cGbPBL13MEyvLPdHbu', '67843098750', 'M', '(85)89967453', 'Finalizado', '../user/iaitso-kot-v-sapogakh-foto-19.jpg');
 
 -- --------------------------------------------------------
 
@@ -268,7 +273,7 @@ ALTER TABLE `tb_end`
 -- AUTO_INCREMENT de tabela `tb_aluno`
 --
 ALTER TABLE `tb_aluno`
-  MODIFY `id_aluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_aluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `tb_caduser`
