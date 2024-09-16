@@ -33,7 +33,7 @@
         <!-- Header-->
         <header class="bg-dark py-5">
             <div class="btn-areas-container">
-                <button class="btn-areas" style="background-color: rgb(219, 252, 33);">EDUCAÇÃO</button>
+                <button class="btn-areas" style="background-color: rgb(252, 237, 86);">EDUCAÇÃO</button>
                 <button class="btn-areas" style="background-color: rgba(248, 112, 0, 0.986)">NEGÓCIOS</button>
                 <button class="btn-areas"  style="background-color: rgb(71, 224, 57);">SAÚDE</button>
                 <button class="btn-areas" style="background-color: rgb(3, 146, 212)" >TECNOLOGIA</button>
@@ -41,8 +41,8 @@
         </header>
         <!-- Section-->
         <section class="py-5">
-                        <div class="cards-main-container">
-                        <div class="card-course">
+            <div class="cards-main-container">
+                <div class="card-course">
                             <div class="card-Img">
                                 <img src="images/default.webp" alt="Course image">
                             </div>
@@ -53,84 +53,9 @@
                             <div class="card-Footer">
                                 <a href="#" class="card-Link">Ver curso</a>
                             </div>
+                        
                         </div>
-                        <div class="card-course">
-                            <div class="card-Img">
-                                <img src="images/default.webp">
-                            </div>
-                            <div class="card-Body">
-                                <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
-                            </div>
-                            <div class="card-Footer">
-                                <a href="#" class="card-Link">Ver curso</a>
-                            </div>
-                        </div>
-                        <div class="card-course">
-                            <div class="card-Img">
-                                <img src="images/default.webp" alt="Course image">
-                            </div>
-                            <div class="card-Body">
-                                <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
-                            </div>
-                            <div class="card-Footer">
-                                <a href="#" class="card-Link">Ver curso</a>
-                            </div>
-                        </div>
-                        <div class="card-course">
-                            <div class="card-Img">
-                                <img src="images/default.webp" alt="Course image">
-                            </div>
-                            <div class="card-Body">
-                                <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
-                            </div>
-                            <div class="card-Footer">
-                                <a href="#" class="card-Link">Ver curso</a>
-                            </div>
-                        </div>
-                        <div class="card-course">
-                            <div class="card-Img">
-                                <img src="images/default.webp" alt="Course image">
-                            </div>
-                            <div class="card-Body">
-                                <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
-                            </div>
-                            <div class="card-Footer">
-                                <a href="#" class="card-Link">Ver curso</a>
-                            </div>
-                        </div>
-                        <div class="card-course">
-                            <div class="card-Img">
-                                <img src="images/default.webp" alt="Course image">
-                            </div>
-                            <div class="card-Body">
-                                <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
-                            </div>
-                            <div class="card-Footer">
-                                <a href="#" class="card-Link">Ver curso</a>
-                            </div>
-                        </div>
-                        <div class="card-course">
-                            <div class="card-Img">
-                                <img src="images/default.webp" alt="Course image">
-                            </div>
-                            <div class="card-Body">
-                                <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
-                            </div>
-                            <div class="card-Footer">
-                                <a href="#" class="card-Link">Ver curso</a>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    
-                    
-                </div>
+            </div>
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">

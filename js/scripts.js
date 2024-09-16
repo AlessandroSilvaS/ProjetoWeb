@@ -1,44 +1,29 @@
-const informationsOfDataBase = [{
-    name: "Tecnico em informática",
-    areaDoCurso: "Tecnologia"
-},
-{
-    name: "Técnico em comércio",
-    areaDoCurso: "Negócios"
-},
-{
-    name: "Tecnico em Enfermagem",
-    areaDoCurso: "Tecnologia"
-},
-{
-    name: "Tecnico em informática",
-    areaDoCurso: "Tecnologia"
-}]//array of data systems
+const informationsOfDataBase = [
+    { name: "Tecnico em informática", areaDoCurso: "Tecnologia" },
+    { name: "Tecnico em comércio", areaDoCurso: "Negócios" },
+    { name: "Tecnico em Enfermagem", areaDoCurso: "Tecnologia" },
+    { name: "Tecnico em informática", areaDoCurso: "Tecnologia" },
+    { name: "Tecnico em logística", areaDoCurso: "Negócios"},
+    { name: "Tecnico em informática", areaDoCurso: "Tecnologia" },
+    { name: "Tecnico em comércio", areaDoCurso: "Negócios" },
+    { name: "Tecnico em Enfermagem", areaDoCurso: "Tecnologia" },
+    { name: "Tecnico em informática", areaDoCurso: "Tecnologia" },
+    { name: "Tecnico em logística", areaDoCurso: "Negócios"},
+    { name: "Tecnico em informática", areaDoCurso: "Tecnologia" },
+    { name: "Tecnico em comércio", areaDoCurso: "Negócios" },
+    { name: "Tecnico em Enfermagem", areaDoCurso: "Tecnologia" },
+    { name: "Tecnico em informática", areaDoCurso: "Tecnologia" },
+    { name: "Tecnico em logística", areaDoCurso: "Negócios"}
+];
 
-const informationsOfDataBase = [{
-    name: "Tecnico em informática",
-    areaDoCurso: "Tecnologia"
-},
-{
-    name: "Técnico em comércio",
-    areaDoCurso: "Negócios"
-},
-{
-    name: "Tecnico em Enfermagem",
-    areaDoCurso: "Tecnologia"
-},
-{
-    name: "Tecnico em informática",
-    areaDoCurso: "Tecnologia"
-}]
+function showCardsCourse() {
+    const cardsContainer = document.querySelector('.cards-main-container');
+    
+    // Limpa o container de cards
+    cardsContainer.innerHTML = '';
 
-//function to filter by area
-
-function showCardsCourse(){
-
-    const cardArray = informationsOfDataBase.map((value) => {
-        const cardsContainer = document.querySelector('.cards-main-container')[0];
-
+    // Cria e anexa os cards
+    informationsOfDataBase.forEach((value) => {
         const card = document.createElement('div');
         card.className = 'card-course';
 
@@ -51,32 +36,31 @@ function showCardsCourse(){
         cardImg.appendChild(imageForCard);
 
         const cardBody = document.createElement('div');
-        cardBody.className = 'card-body';
+        cardBody.className = 'card-Body';
 
         const title = document.createElement('p');
-        title.textContent = imageForCard.title;
+        title.className = 'title-course'
+        title.textContent = value.name;
 
         cardBody.appendChild(title);
 
         const footerCard = document.createElement('div');
         footerCard.className = 'card-Footer';
-    })
 
-    informationsOfDataBase.forEach(item => {
-        if(item.areaDoCurso === area){
-            const card = document.createElement('div');
-            card.className = 'card';
+        const footerLink = document.createElement('a');
+        footerLink.className = 'card-Link';
+        footerLink.href = '#'; // Defina o href ou outro conteúdo para o link
+        footerLink.textContent = 'Ver curso'; // Texto do link
 
-            const title = document.createElement('h2');
-            title.textContent = item.name;
+        footerCard.appendChild(footerLink);
 
-            const areaText = document.createElement('p');
-            areaText.textContent = `Área: ${item.areaDoCurso}`;
+        card.appendChild(cardImg);
+        card.appendChild(cardBody);
+        card.appendChild(footerCard);
 
-            card.appendChild(title);
-            card.appendChild(areaText);
-
-            cardsContainer.appendChild(card);
-        }
+        cardsContainer.appendChild(card);
     });
 }
+
+// Certifique-se de chamar a função para exibir os cards
+showCardsCourse();
