@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 * {
     margin: 0;
@@ -13,6 +14,7 @@
   .navbar {
     display: flex;
     justify-content: space-between;
+    gap: 5px;
     align-items: center;
     background-color: #275aff;
     color: #fff;
@@ -37,14 +39,12 @@
   border-radius: 10px;
 }
 
-
-
-
-
-
-
-  
-  /* Estilo do Conteúdo Principal */
+.navbar a:hover {
+  transition: .3s;
+  background-color: #0036e6;
+  color: white;
+}
+/* Estilo do Conteúdo Principal */
   .main-content {
     padding: 20px;
     min-height: calc(
@@ -57,7 +57,8 @@
   
   /* Estilo da Seção de Gerenciamento de Perfis */
   .profile-management {
-    width:795px;
+    margin-left: 7%;
+    width:900px;
     max-width: 1200px; /* Limita a largura máxima da seção */
     padding: 20px;
     background-color: #f4f4f4; /* Fundo da seção para destacar */
@@ -84,18 +85,15 @@
   }
   
   .profile-table {
-    width: 750px;
+    width: 850px;
     border-collapse: collapse;
     max-width: 1000px; /* Limita a largura máxima da tabela */
-    font-size: 15px;
-    
   }
   
   .profile-table th,
   .profile-table td {
     border: 1px solid #ddd;
     padding: 15px;
-    font-size: 13px;
     text-align: center;
   }
   
@@ -240,19 +238,37 @@
   border-color: rgb(19, 72, 247);
 }
 
-footer{
-  background-color: black;
-  color: white;
-  height: 95px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+footer {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+    display: flex;
+    justify-content: space-between;
 }
 
-.bi.bi-github{
-  font-size: 1.3em;
-  color: white;
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	display: inline-block;
+	margin: 0 10px;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
+.bi.bi-github {
+    font-size: 1.3em;
 }
 
 
+@media (max-width: 992px) {
+  img{
+    display: none;;
+  }
+}

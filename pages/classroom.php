@@ -15,7 +15,7 @@ include_once "../conexao.php";
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar">
-            <a href="../index.php">Home</a>
+            <a href="../index.php"  class="home">Home</a>
             <a href="registration.php">Cadastrar Alunos</a>
             <a href="logout.php">Logout</a>
         </div>

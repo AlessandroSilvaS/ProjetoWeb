@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
 <div class="super_pai" style="display: flex;">
-<img src="../gif/update/update-not-css.svg" width="500px" style="margin-left: 10%;">
+<img src="../gif/update/update-not-css.svg" width="600px" style="margin-left: 10%;">
     <div class="pai">
         <h1>Editar Aluno</h1>
         <div class="containe-main">
@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input class="form-control" type="text" name="nome" id="nome" value="<?php echo htmlspecialchars($aluno->aluno_nome); ?>" required>
                 <label for="email">Email:</label>
                 <input class="form-control" type="email" name="email" id="email" value="<?php echo htmlspecialchars($aluno->aluno_email); ?>" required>
-                <label for="status_curso">Status do Curso:</label>
+                <label for="status_curso">Curso:</label>
                 <input class="form-control" type="text" id="status_curso" name="status_curso" value="<?php echo htmlspecialchars($aluno->curso_status); ?>" required>
                 <label for="senha">Senha:</label>
                 <input class="form-control" type="password" id="senha" name="senha" placeholder="Digite a nova senha (deixe em branco para manter a atual)">
