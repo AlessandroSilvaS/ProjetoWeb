@@ -17,6 +17,7 @@ include_once "../conexao.php";
         <div class="navbar">
             <a href="../index.php">Home</a>
             <a href="registration.php">Cadastrar Alunos</a>
+            <a href="logout.php">Logout</a>
         </div>
         <div class="navbar-logo">
             <img src="../assets/logo.png" alt="logo" width="50px" style="border-radius:50px; margin-right:20px; margin-top: 5px;">
