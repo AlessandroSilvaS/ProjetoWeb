@@ -140,7 +140,19 @@ CREATE TABLE `tb_curso` (
 --
 
 INSERT INTO `tb_curso` (`id_curso`, `curso_nome`, `curso_descricao`, `curso_duracao`) VALUES
-(1, 'Informática', 'Um curso que visa ensinar desde o básico ao avançado', 102);
+(1, 'Informática', 'Um curso que visa ensinar desde o basico ao avancado', 102),
+(2, 'Design Gráfico', 'Curso focado em técnicas e ferramentas de design gráfico', 120),
+(3, 'Programação Web', 'Aprenda a criar sites e aplicações web com as tecnologias mais modernas', 150),
+(4, 'Banco de Dados', 'Introdução e técnicas avançadas em gerenciamento de banco de dados', 130),
+(5, 'Marketing Digital', 'Estratégias e ferramentas para promover produtos e serviços online', 110),
+(6, 'Segurança da Informação', 'Curso sobre práticas e conceitos de segurança em TI', 140),
+(7, 'Desenvolvimento de Jogos', 'Criação e desenvolvimento de jogos eletrônicos', 160),
+(8, 'Fotografia Digital', 'Aprenda técnicas e práticas para capturar e editar fotos digitais', 90),
+(9, 'Administração de Redes', 'Gerenciamento e configuração de redes de computadores', 125),
+(10, 'Desenvolvimento de Aplicativos Móveis', 'Criação de aplicativos para plataformas móveis', 140),
+(11, 'Análise de Dados', 'Curso sobre técnicas de análise e visualização de dados', 115),
+(12, 'Inteligência Artificial', 'Fundamentos e aplicações de IA em diversas áreas', 135);
+
 
 -- --------------------------------------------------------
 
