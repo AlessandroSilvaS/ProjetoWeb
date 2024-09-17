@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = "";
-$dbname = "bdCursos_alunos.sql"; // Certifique-se de que este nome está correto
+$pass = "bdjmf";
+$dbname = "dbCursos_Alunos"; 
 
 try {
     // Conectar ao banco de dados com PDO

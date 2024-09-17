@@ -1,23 +1,3 @@
-const informationsOfDataBase = [
-    { name: "Tecnico em informática", areaDoCurso: "Tecnologia" },
-    { name: "Tecnico em comércio", areaDoCurso: "Negócios" },
-    { name: "Tecnico em Enfermagem", areaDoCurso: "Tecnologia" },
-    { name: "Tecnico em informática", areaDoCurso: "Tecnologia" },
-    { name: "Tecnico em logística", areaDoCurso: "Negócios"},
-    { name: "Tecnico em informática", areaDoCurso: "Tecnologia" },
-    { name: "Tecnico em comércio", areaDoCurso: "Negócios" },
-    { name: "Tecnico em Enfermagem", areaDoCurso: "Tecnologia" },
-    { name: "Tecnico em informática", areaDoCurso: "Tecnologia" },
-    { name: "Tecnico em logística", areaDoCurso: "Negócios"},
-    { name: "Tecnico em informática", areaDoCurso: "Tecnologia" },
-    { name: "Tecnico em comércio", areaDoCurso: "Negócios" },
-    { name: "Tecnico em Enfermagem", areaDoCurso: "Tecnologia" },
-    { name: "Tecnico em informática", areaDoCurso: "Tecnologia" },
-    { name: "Tecnico em logística", areaDoCurso: "Negócios"}
-];
-
-
-
 function showCardsCourse(datas) {
     const cardsContainer = document.querySelector('.cards-main-container');
     
@@ -51,7 +31,7 @@ function showCardsCourse(datas) {
 
         const footerLink = document.createElement('a');
         footerLink.className = 'card-Link';
-        footerLink.href = '#'; // Defina o href ou outro conteúdo para o link
+        footerLink.href = '#';
         footerLink.textContent = 'Ver curso'; // Texto do link
 
         footerCard.appendChild(footerLink);
@@ -64,8 +44,7 @@ function showCardsCourse(datas) {
     });
 }
 
-// Certifique-se de chamar a função para exibir os cards
-//showCardsCourse(informationsOfDataBase);
+
 
 async function getDatas(){
     try {
@@ -82,11 +61,11 @@ async function getDatas(){
 
         console.log(data)
 
-         showCardsCourse(data);
+        showCardsCourse(data);
     } catch (error) {
         // Exibe qualquer erro que ocorra durante a requisição ou o processamento
         console.error('Erro:', error);
     }
 }
 
-const cardsArray = getDatas()
+getDatas()
