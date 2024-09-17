@@ -17,8 +17,8 @@
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container_px-4_px-lg-5">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+            <div class="container_px-4_px-lg-5" >
                 <div class="container-buttons">
                     <button class="add" style="background-color: green;">
                         <i class="bi bi-plus"></i>
@@ -41,6 +41,9 @@
         </header>
         <!-- Section-->
         <section class="py-5">
+        <?php
+
+        ?>
             <div class="cards-main-container">
                 <div class="card-course">
                             <div class="card-Img">

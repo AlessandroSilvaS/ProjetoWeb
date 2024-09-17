@@ -16,14 +16,16 @@ const informationsOfDataBase = [
     { name: "Tecnico em logística", areaDoCurso: "Negócios"}
 ];
 
-function showCardsCourse() {
+
+
+function showCardsCourse(datas) {
     const cardsContainer = document.querySelector('.cards-main-container');
     
     // Limpa o container de cards
     cardsContainer.innerHTML = '';
 
     // Cria e anexa os cards
-    informationsOfDataBase.forEach((value) => {
+    datas.map((value) => {
         const card = document.createElement('div');
         card.className = 'card-course';
 
@@ -40,7 +42,7 @@ function showCardsCourse() {
 
         const title = document.createElement('p');
         title.className = 'title-course'
-        title.textContent = value.name;
+        title.textContent = value.curso_nome;
 
         cardBody.appendChild(title);
 
@@ -63,4 +65,28 @@ function showCardsCourse() {
 }
 
 // Certifique-se de chamar a função para exibir os cards
-showCardsCourse();
+//showCardsCourse(informationsOfDataBase);
+
+async function getDatas(){
+    try {
+        // Faz a requisição para index.php
+        const response = await fetch("pages/dataCourse.php");
+
+        // Verifica se a resposta foi bem-sucedida
+        if (!response.ok) {
+            throw new Error('Erro na requisição: ' + response.statusText);
+        }
+
+        // Converte a resposta para JSON
+        const data = await response.json();
+
+        console.log(data)
+
+         showCardsCourse(data);
+    } catch (error) {
+        // Exibe qualquer erro que ocorra durante a requisição ou o processamento
+        console.error('Erro:', error);
+    }
+}
+
+const cardsArray = getDatas()
