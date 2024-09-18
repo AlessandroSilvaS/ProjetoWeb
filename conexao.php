@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "bdjmf";
-$dbname = "dbCursos_Alunos"; 
+$host="localhost";
+$user ="root";
+$pass ="bdjmf";
+$dbname = "bdCursos_Alunos";
 
 try {
     // Conectar ao banco de dados com PDO

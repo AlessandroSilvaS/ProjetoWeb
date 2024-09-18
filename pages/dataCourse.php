@@ -1,13 +1,29 @@
 <?php
-include '../conexao.php';
 header('Content-Type: application/json');
 
+$host = "localhost";
+$user = "";
+$pass = "";
+$dbname = "bdcursos_alunos.sql"; 
+
 try {
+    // Conectar ao banco de dados com PDO
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $error) {
+    die("Erro de conexão: " . $error->getMessage());
+}
+
+try {
+    // Conectar ao banco de dados com PDO
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     // Executa a consulta SQL
-    $sql = $conn->query("SELECT * FROM tb_curso");
+    $stmt = $conn->query("SELECT * FROM tb_curso");
 
     // Busca todos os resultados em um array associativo
-    $data = $sql->fetchAll(PDO::FETCH_ASSOC);
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Codifica o array para JSON e o envia como resposta
     echo json_encode($data);
