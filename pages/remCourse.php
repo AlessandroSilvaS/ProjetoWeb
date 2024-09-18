@@ -1,35 +1,32 @@
 <?php
-// include '../conexao.php';
-// // Processar o envio do formulário
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $id = $_POST['id'];
+include '../conexao.php';
 
-//     // Validação simples
-//     if (empty($id) || !is_numeric($id)) {
-//         echo "ID inválido.";
-//     } else {
-//         try {
-//             // Remover o curso do banco de dados
-//             $sql = "DELETE FROM tb_curso WHERE id = :id";
-//             $stmt = $conn->prepare($sql);
-//             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-//             $stmt->execute();
+// Processar o envio do formulário
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome_curso = $_POST['nome_curso'];
 
-//             if ($stmt->rowCount() > 0) {
-//                 echo "Curso removido com sucesso!";
-//             } else {
-//                 echo "Nenhum curso encontrado com esse ID.";
-//             }
-//         } catch (PDOException $e) {
-//             echo "Erro ao remover curso: " . $e->getMessage();
-//         }
-//     }
-// }
+    // Validação simples
+    if (empty($nome_curso)) {
+        echo "Nome do curso inválido.";
+    } else {
+        try {
+            // Remover o curso do banco de dados
+            $sql = "DELETE FROM tb_curso WHERE curso_nome = :nome_curso";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':nome_curso', $nome_curso);
+            $stmt->execute();
 
-// // Consultar todos os cursos para exibir no formulário
-// $sql = "SELECT id, nome FROM tb_curso";
-// $stmt = $conn->query($sql);
-// $cursos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if ($stmt->rowCount() > 0) {
+                echo "Curso removido com sucesso!";
+                header('Location: ../index.php');
+            } else {
+                echo "Nenhum curso encontrado com esse nome.";
+            }
+        } catch (PDOException $e) {
+            echo "Erro ao remover curso: " . $e->getMessage();
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,15 +43,8 @@
     </header>
     <form method="POST" action="">
         <div class="form-group">
-            <label for="id">Selecione o Curso para Remover:</label>
-            <select id="id" name="id" required>
-                <option value="">-- Selecione um Curso --</option>
-                <?php foreach ($cursos as $curso): ?>
-                    <!-- <option value="<?php echo htmlspecialchars($curso['id']); ?>">
-                        <?php echo htmlspecialchars($curso['nome']); ?>
-                    </option> -->
-                <?php endforeach; ?>
-            </select>
+            <label for="nome_curso">Digite o nome do Curso para Remover:</label>
+            <input type="text" id="nome_curso" name="nome_curso" required>
         </div>
         <div class="form-group">
             <input type="submit" value="Remover Curso">

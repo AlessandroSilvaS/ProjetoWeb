@@ -23,7 +23,7 @@
                     <a href="pages/addCourse.php" class="link-icon"><i class="bi bi-plus"></i></a> 
                     </button>
                     <button class="rem">
-                    <a href="pages/addCourse.php" class="link-icon"><i class="bi bi-dash"></i></a>
+                    <a href="pages/remCourse.php" class="link-icon"><i class="bi bi-dash"></i></a>
                     </button>
                 </div>
                 <h1>Bem vindo(a) professor(a)!</h1>
@@ -32,19 +32,18 @@
         <!-- Section-->
         <section class="py-5">
             <div class="cards-main-container">
-                <div class="card-course">
+               <!-- <div class="card-course">
                             <div class="card-Img">
                                 <img src="images/default.webp" alt="Course image">
                             </div>
                             <div class="card-Body">
                                 <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
                             </div>
                             <div class="card-Footer">
                                 <a href="#" class="card-Link">Ver curso</a>
                             </div>
                         
-                        </div>
+                        </div>-->
             </div>
         </section>
         <!-- Footer-->

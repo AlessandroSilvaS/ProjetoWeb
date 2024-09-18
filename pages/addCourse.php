@@ -1,7 +1,6 @@
 <?php
 include '../conexao.php';
 
-
 // Processar o envio do formulário
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
@@ -14,16 +13,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         try {
             // Inserir os dados no banco de dados
-            $sql = "INSERT INTO tb_curso (nome, descricao, carga_horaria) VALUES (:nome, :descricao, :carga_horaria)";
+            $sql = "INSERT INTO tb_curso (curso_nome, curso_descricao, curso_duracao) VALUES (:nome, :descricao, :carga_horaria)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':carga_horaria', $carga_horaria);
             $stmt->execute();
 
-            echo "Curso adicionado com sucesso!";
+            header('Location: ../index.php');
         } catch (PDOException $e) {
-            echo "Erro ao adicionar curso: " . $e->getMessage();
+            echo "Erro ao adicionar curso: ".$e->getMessage();
         }
     }
 }
