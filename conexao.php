@@ -1,0 +1,15 @@
+<?php
+
+    $host="localhost";
+    $user ="root";
+    $pass ="bdjmf";
+    $dbname = "bdcursos_alunos";
+
+    try {
+        // Conectar ao banco de dados com a string de conexão correta
+        $conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+    } catch (PDOException $error) {
+        echo "Erro de conexão: " . $error->getMessage();
+    }

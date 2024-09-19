@@ -1,3 +1,22 @@
+<?php
+session_start(); // Inicia a sessão para manter o estado dos menus
+
+// Verifica se o botão foi clicado para o menu principal
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['toggleMenu'])) {
+        $_SESSION['showMenu'] = !isset($_SESSION['showMenu']) || !$_SESSION['showMenu'];
+    }
+
+    // Verifica se o botão foi clicado para o menu dropdown
+    if (isset($_POST['toggleMenuDrop'])) {
+        $_SESSION['showMenuDrop'] = !isset($_SESSION['showMenuDrop']) || !$_SESSION['showMenuDrop'];
+    }
+}
+
+// Define o estado dos menus
+$menuVisible = isset($_SESSION['showMenu']) && $_SESSION['showMenu'];
+$menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop'];
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -9,10 +28,22 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar">
-      <button class="navbar-btn">Botão</button>
-      <div class="navbar-logo">Logo</div>
-    </nav>
+        <form method="post" action="">
+            <button class="toggle-button" type="submit" name="toggleMenu">
+                <?php echo $menuVisible ? 'Ocultar Menu Principal' : 'Mostrar Menu Principal'; ?>
+            </button>
+        </form>
+        <div class="navbar-logo">Logo</div>
 
+        <!-- Menu Principal (Horizontal) -->
+        <div class="menu" id="myMenu" style="display: <?php echo $menuVisible ? 'block' : 'none'; ?>;">
+            <ul>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 2</a></li>
+                <li><a href="#">Item 3</a></li>
+            </ul>
+        </div>
+    </nav>
     <!-- Conteúdo Principal -->
     <main class="main-content">
       <section class="registration-box">
@@ -43,6 +74,7 @@
           <button type="submit">Matricular</button>
         </form>
       </section>
+      <a href="../images/registration1.png">Worker illustrations by Storyset</a>
     </main>
   </body>
 </html>
