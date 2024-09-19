@@ -2,6 +2,14 @@
 include_once "../conexao.php";
 session_start(); // Inicia a sessão para manter o estado dos menus
 
+$message = ''; // Variável para armazenar mensagens
+$imageBlob = null; // Para armazenar a imagem recuperada
+
+// Verifica se a conexão ao banco de dados foi bem-sucedida
+if (!$conn) {
+    die("Erro de conexão ao banco de dados.");
+}
+
 // Verifica se o botão foi clicado para o menu principal
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['toggleMenu'])) {
@@ -15,12 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Verifica se o formulário foi enviado
     if (isset($_POST['name'], $_POST['email'], $_POST['age'], $_POST['gender'], $_POST['class'], $_POST['course'], $_POST['password'])) {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $age = $_POST['age'];
-        $gender = $_POST['gender'];
-        $class = $_POST['class'];
-        $course = $_POST['course'];
+        $name = htmlspecialchars(trim($_POST['name']));
+        $email = htmlspecialchars(trim($_POST['email']));
+        $age = (int)$_POST['age'];
+        $gender = htmlspecialchars(trim($_POST['gender']));
+        $class = htmlspecialchars(trim($_POST['class']));
+        $course = htmlspecialchars(trim($_POST['course']));
         $password = $_POST['password'];
 
         // Hash da senha
@@ -29,24 +37,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Processa o upload da imagem
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $fileTmpPath = $_FILES['image']['tmp_name'];
-            $fileName = $_FILES['image']['name'];
-            $uploadFileDir = '../uploads/'; // Diretório onde as imagens serão salvas
-            $dest_path = $uploadFileDir . basename($fileName);
+            $fileType = mime_content_type($fileTmpPath);
 
-            // Move o arquivo para o diretório de destino
-            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+            // Verifica se o arquivo é uma imagem
+            if (strpos($fileType, 'image/') === 0) {
+                $imageData = file_get_contents($fileTmpPath); // Lê o conteúdo da imagem
+
                 // Prepara a consulta SQL para inserir os dados
-                $stmt = $pdo->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_email, aluno_senha, aluno_genero, aluno_nascimento, curso_status, aluno_imagem) VALUES (?, ?, ?, ?, CURDATE(), ?, ?)");
-                $stmt->execute([$name, $email, $hashedPassword, $gender, 'Em andamento', $fileName]);
-
-                echo "Aluno cadastrado com sucesso!";
+                $stmt = $conn->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_email, aluno_senha, aluno_genero, aluno_nascimento, curso_status, aluno_imagem) VALUES (?, ?, ?, ?, CURDATE(), ?, ?)");
+                
+                try {
+                    if ($stmt->execute([$name, $email, $hashedPassword, $gender, 'Em andamento', $imageData])) {
+                        $message = "Aluno cadastrado com sucesso!";
+                    } else {
+                        $message = "Erro ao cadastrar o aluno. Tente novamente.";
+                    }
+                } catch (PDOException $e) {
+                    $message = "Erro no banco de dados: " . $e->getMessage();
+                }
             } else {
-                echo "Erro ao enviar o arquivo.";
+                $message = "O arquivo enviado não é uma imagem.";
             }
         } else {
-            echo "Nenhuma imagem foi enviada ou ocorreu um erro no upload.";
+            if (isset($_FILES['image'])) {
+                $message = "Erro no upload: " . $_FILES['image']['error'];
+            } else {
+                $message = "Nenhuma imagem foi enviada.";
+            }
         }
     }
+}
+
+// Recupera a última imagem cadastrada
+$stmt = $conn->query("SELECT foto_aluno FROM tb_aluno ORDER BY id DESC LIMIT 1"); // Ajuste conforme o nome da sua coluna de ID
+if ($stmt->rowCount() > 0) {
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $imageBlob = $row['foto_aluno'];
 }
 
 // Define o estado dos menus
@@ -84,7 +110,10 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
     <main class="main-content">
         <section class="registration-box">
             <h1>Formulário de Matrícula</h1>
-            <form action="#" method="post" enctype="multipart/form-data"> <!-- Adicionado enctype -->
+            <?php if ($message): ?>
+                <div class="message"><?php echo $message; ?></div>
+            <?php endif; ?>
+            <form action="" method="post" enctype="multipart/form-data"> <!-- Adicionado enctype -->
                 <label for="image">Imagem</label>
                 <input class="buttonImg" type="file" id="image" name="image" required>
                 <label for="name">Nome:</label>
@@ -115,6 +144,15 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
                 <button type="submit">Matricular</button>
             </form>
         </section>
+        
+        <!-- Exibindo a imagem armazenada -->
+        <?php if ($imageBlob): ?>
+            <div class="image-display">
+                <h2>Última Imagem Cadastrada:</h2>
+                <img src="data:image/jpeg;base64,<?= base64_encode($imageBlob) ?>" alt="Imagem do Aluno" />
+            </div>
+        <?php endif; ?>
+
         <img class="imageRegistration" src="../images/registration1.png" alt="">
     </main>
 </body>

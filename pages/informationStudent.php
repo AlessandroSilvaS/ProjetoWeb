@@ -42,7 +42,7 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
             <ul>
                 <li><a href="#">Item 1</a></li>
                 <li><a href="#">Item 2</a></li>
-                <li><a href="#">Item 3</a></li>
+                <a href="logout.php">Logout</a>
             </ul>
         </div>
     </nav>
