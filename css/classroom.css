@@ -1,6 +1,5 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 * {
     margin: 0;
@@ -51,13 +50,13 @@
       100vh - 50px
     ); /* Ajusta a altura para ocupar o restante da tela, menos a navbar */
     display: flex; 
+    justify-content: center;
     align-items: center; /* Centraliza verticalmente */
   }
  
   
   /* Estilo da Seção de Gerenciamento de Perfis */
   .profile-management {
-    margin-left: 7%;
     width:900px;
     max-width: 1200px; /* Limita a largura máxima da seção */
     padding: 20px;
@@ -79,7 +78,6 @@
   }
   
   .table-container {
-    
     display: flex;
     justify-content: center; /* Centraliza a tabela horizontalmente */
   }

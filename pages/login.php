@@ -136,7 +136,7 @@ if (isset($_SESSION['msg'])) {
     unset($_SESSION['msg']);
 }
 ?>
-            <p>Esqueceu sua senha? <a href="#" class="change-password">clique aqui</a></p>
+          
             
         </div>
     </div>

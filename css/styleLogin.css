@@ -23,21 +23,18 @@ body {
     background-color: rgb(39, 90, 255);
     width: 50%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-left:10px ;
+    
 }
 
 .container-main {
-    width: 420px;
-    height: auto;
+    width: 90%; 
+    max-width: 400px;
     padding: 30px;
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 3px 3px #949393;
     text-align: center;
-    margin-left: 250px;
+   
 }
 
 .container-main form {

@@ -12,10 +12,9 @@ include_once "../conexao.php";
     <link rel="stylesheet" href="../css/classroom.css" />
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar">
-            <a href="../index.php"  class="home">Home</a>
+            <a href="../index.php" class="home">Home</a>
             <a href="registration.php">Cadastrar Alunos</a>
             <a href="logout.php">Logout</a>
         </div>
@@ -24,19 +23,28 @@ include_once "../conexao.php";
         </div>
     </nav>
 
-    <!-- Conteúdo Principal -->
     <main class="main-content">
-        <!-- Seção de Gerenciamento de Perfis -->
         <section>
             <div class="profile-management">
                 <h1>Gerenciamento de Perfis</h1>
             
+                <!-- Filtro por professor -->
                 <form method="GET" action="">
-                    <div class="form-group">
-                        <input type="text" name="search" class="form-control" placeholder="Pesquisar por nome ou email" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
-                    </div>
-                    <button type="submit" class="pesquisas_btn">Pesquisar</button>
+                    <select name="professor" class="form-control">
+                        <option value="">Selecione um Professor</option>
+                        <?php
+                        // Buscar todos os professores
+                        $professoresQuery = "SELECT * FROM tb_caduser";
+                        $professores = $conn->query($professoresQuery);
+
+                        while ($professor = $professores->fetch(PDO::FETCH_OBJ)) {
+                            echo "<option value='".htmlspecialchars($professor->id_caduser)."'>".htmlspecialchars($professor->caduser_name)."</option>";
+                        }
+                        ?>
+                    </select>
+                    <button type="submit" class="pesquisas_btn">Filtrar</button>
                 </form>
+
                 
                 <table class="profile-table">
                     <thead>
@@ -45,7 +53,7 @@ include_once "../conexao.php";
                             <th>Foto</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Status do Curso</th>
+                            <th>Curso</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
@@ -55,21 +63,20 @@ include_once "../conexao.php";
                         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                         $page = max($page, 1);
                         $offset = ($page - 1) * $limit;
-                        $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
-                        $searchTerm = htmlspecialchars($searchTerm);
+                        $professorId = isset($_GET['professor']) ? (int)$_GET['professor'] : null;
 
-                        $totalQuery = "SELECT COUNT(*) FROM tb_aluno WHERE aluno_nome LIKE :searchTerm OR aluno_email LIKE :searchTerm";
+                        $totalQuery = "SELECT COUNT(*) FROM tb_aluno WHERE id_professor = :professorId";
                         $totalResult = $conn->prepare($totalQuery);
-                        $totalResult->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
+                        $totalResult->bindValue(':professorId', $professorId, PDO::PARAM_INT);
                         $totalResult->execute();
                         $totalRows = $totalResult->fetchColumn();
 
                         $totalPages = ceil($totalRows / $limit);
 
-                        $select = "SELECT * FROM tb_aluno WHERE aluno_nome LIKE :searchTerm OR aluno_email LIKE :searchTerm ORDER BY id_aluno DESC LIMIT :limit OFFSET :offset";
+                        $select = "SELECT * FROM tb_aluno WHERE id_professor = :professorId ORDER BY id_aluno DESC LIMIT :limit OFFSET :offset";
                         try {
                             $result = $conn->prepare($select);
-                            $result->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
+                            $result->bindValue(':professorId', $professorId, PDO::PARAM_INT);
                             $result->bindValue(':limit', $limit, PDO::PARAM_INT);
                             $result->bindValue(':offset', $offset, PDO::PARAM_INT);
                             $result->execute();
@@ -104,7 +111,7 @@ include_once "../conexao.php";
                         <?php
                                 }
                             } else {
-                                echo "<tr><td colspan='4'>Nenhum aluno encontrado.</td></tr>";
+                                echo "<tr><td colspan='6'>Nenhum aluno encontrado.</td></tr>";
                             }
                         } catch (PDOException $e) {
                             echo "Erro: " . $e->getMessage();
@@ -136,9 +143,7 @@ include_once "../conexao.php";
                 </nav>
             </div>
         </section>
-        <div class="animated">
-            <img src="../gif/classroom.svg" alt="">
-        </div>
+       
     </main>
     <footer class="bg-dark text-white text-center py-3 mt-4">
         <p>&copy; <?php echo date('Y'); ?> Todos os direitos reservados.</p>
