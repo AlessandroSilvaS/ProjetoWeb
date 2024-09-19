@@ -1,3 +1,4 @@
+
 /* Reset básico */
 * {
   margin: 0;
@@ -10,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: #275aff;
   color: #fff;
   padding: 10px;
   position: relative; /* Para posicionar o menu em relação à navbar */
@@ -22,13 +23,27 @@
 
 /* Estilo do botão */
 .toggle-button {
-  background-color: #333;
+  background-color: #275aff;
   color: #fff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
   border-radius: 5px;
+
+}
+.buttonImg{
+  background-color: #275aff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+
+}
+.toggle-button button:hover {
+  background-color: #0056b3;
 }
 
 /* Estilo do menu principal (navbar dropdown) */
@@ -111,7 +126,7 @@
 }
 
 .registration-box button {
-  background-color: #007bff;
+  background-color: #275aff;
   color: #fff;
   border: none;
   padding: 10px;
@@ -132,7 +147,7 @@
     height: auto;
     top: 60px;
     left: 0;
-    background-color: #333;
+    background-color: #0099ff;
     color: #fff;
     display: none; /* Esconde a sidebar por padrão */
     z-index: 2000; /* Garante que a sidebar fique sobre outros elementos */
@@ -149,4 +164,9 @@
     left: 15px;
     z-index: 3000; /* Garante que o botão fique sobre outros elementos */
   }
+}
+.imageRegistration 
+{
+
+width: 700px;
 }

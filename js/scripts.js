@@ -61,9 +61,10 @@ function showCardsCourse(valores) {
             footerCard.style.marginTop='20px'
     
             // Cria o link do rodapé do card
+            idCourse = value.id_curso
             const footerLink = document.createElement('a');
             footerLink.className = 'card-Link';
-            footerLink.href = 'showCorseInd.php?id=${value.curso_id}';
+            footerLink.href = 'pages/showCorseInd.php?id=idCourse';
             footerLink.textContent = 'Ver curso'; // Texto do link
     
             // Anexa os elementos ao card
