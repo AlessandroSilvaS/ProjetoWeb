@@ -3,7 +3,6 @@ include '../conexao.php';
 
 // Obter o ID do curso da URL
 $id_curso = $_GET['id'];
-
 // Consultar o curso no banco de dados
 $sql = "SELECT * FROM tb_curso WHERE id_curso = :id";
 $stmt = $conn->prepare($sql);
@@ -86,16 +85,16 @@ if (!$curso) {
         <h1>Informações do Curso</h1>
     </header>
     <div class="curso-info">
-        <h1 style="text-align: center; margin-top: 40px;"><?php echo htmlspecialchars($curso['nome']); ?></h1>
+        <h1 style="text-align: center; margin-top: 40px;"><?php echo htmlspecialchars($curso['curso_nome']); ?></h1>
 
         <div class="grid-container">
             <div class="grid-header">Nome do Curso</div>
             <div class="grid-header">Instrutor</div>
             <div class="grid-header">Descrição</div>
 
-            <div class="grid-item"><?php echo htmlspecialchars($curso['nome']); ?></div>
+            <div class="grid-item"><?php echo htmlspecialchars($curso['curso_nome']); ?></div>
             <div class="grid-item"><?php echo htmlspecialchars($curso['instrutor']); ?></div>
-            <div class="grid-item"><?php echo htmlspecialchars($curso['descricao']); ?></div>
+            <div class="grid-item"><?php echo htmlspecialchars($curso['curso_descricao']); ?></div>
         </div>
     </div>
 </body>
