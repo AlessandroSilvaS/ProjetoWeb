@@ -5,7 +5,7 @@ include '../conexao.php';
 $id_curso = $_GET['id'];
 
 // Consultar o curso no banco de dados
-$sql = "SELECT * FROM tb_curso WHERE id = :id";
+$sql = "SELECT * FROM tb_curso WHERE id_curso = :id";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':id', $id_curso);
 $stmt->execute();

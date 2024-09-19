@@ -29,6 +29,9 @@
                 </div>
                 <h1>Bem vindo(a) professor(a)!</h1>
             </div>
+            <div class="nav-container-secondary">
+                <button class="menu">botão</button>
+            </div>
         </nav>
         <!-- Section-->
         <section class="py-5">

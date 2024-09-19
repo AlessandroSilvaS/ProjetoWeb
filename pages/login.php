@@ -99,7 +99,7 @@ include_once '../conexao.php';
                 $_SESSION['id_aluno'] = $row_user['id_aluno'];
                 $_SESSION['aluno_nome'] = $row_user['aluno_nome'];
                 $_SESSION['aluno_password'] = $storedPasswordHash;
-                header("Location: ../index.php");
+                header("Location: informationStudent.php");
             } elseif ($userType === 'professor') {
                 $_SESSION['id_caduser'] = $row_user['id_caduser'];
                 $_SESSION['caduser_name'] = $row_user['caduser_name'];
@@ -109,7 +109,7 @@ include_once '../conexao.php';
                 $_SESSION['id_diretor'] = $row_user['id_diretor'];
                 $_SESSION['diretor_name'] = $row_user['nome_diretor'];
                 $_SESSION ['diretor_senha'] = $storedPasswordHash;
-                header("Location: registration.php");
+                header("Location: ../index.php");
                
             }
             exit();

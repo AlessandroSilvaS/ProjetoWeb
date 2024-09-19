@@ -34,8 +34,7 @@ body {
     background-color: white;
     box-shadow: 0 3px 3px #949393;
     text-align: center;
-    margin-left: 250px;
-   
+   margin-left: 250px;
 }
 
 .container-main form {
@@ -237,5 +236,3 @@ div.alert.alert-danger, div.alert.alert-warning, div.alert.alert-primary{
         margin-top: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
-
