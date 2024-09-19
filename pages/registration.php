@@ -38,9 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $fileTmpPath = $_FILES['image']['tmp_name'];
             $fileType = mime_content_type($fileTmpPath);
+            $allowedTypes = ['image/jpeg', 'image/png'];
 
             // Verifica se o arquivo é uma imagem
-            if (strpos($fileType, 'image/') === 0) {
+            if (strpos($fileType, 'image/') === 0 && in_array($fileType, $allowedTypes)) {
                 $imageData = file_get_contents($fileTmpPath); // Lê o conteúdo da imagem
 
                 // Prepara a consulta SQL para inserir os dados
@@ -56,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $message = "Erro no banco de dados: " . $e->getMessage();
                 }
             } else {
-                $message = "O arquivo enviado não é uma imagem.";
+                $message = "O arquivo enviado não é uma imagem válida. Apenas JPEG e PNG são permitidos.";
             }
         } else {
             if (isset($_FILES['image'])) {
@@ -68,8 +69,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Recupera a última imagem cadastrada
-$stmt = $conn->query("SELECT foto_aluno FROM tb_aluno ORDER BY id DESC LIMIT 1"); // Ajuste conforme o nome da sua coluna de ID
+// Recupera a última imagem cadastrada de forma segura
+$stmt = $conn->prepare("SELECT foto_aluno FROM tb_aluno ORDER BY id DESC LIMIT 1");
+$stmt->execute();
 if ($stmt->rowCount() > 0) {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $imageBlob = $row['foto_aluno'];
@@ -113,7 +115,7 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
             <?php if ($message): ?>
                 <div class="message"><?php echo $message; ?></div>
             <?php endif; ?>
-            <form action="" method="post" enctype="multipart/form-data"> <!-- Adicionado enctype -->
+            <form action="" method="post" enctype="multipart/form-data">
                 <label for="image">Imagem</label>
                 <input class="buttonImg" type="file" id="image" name="image" required>
                 <label for="name">Nome:</label>
