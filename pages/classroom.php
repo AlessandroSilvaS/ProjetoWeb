@@ -89,7 +89,7 @@ include_once "../conexao.php";
                                         <td><?php echo $rowNumber++; ?></td>
                                         <td>
                                             <?php if (!empty($show->foto_aluno) && file_exists('../user/' . $show->foto_aluno)): ?>
-                                                <img src="../user/<?php echo htmlspecialchars($show->foto_aluno); ?>" alt="Foto do Aluno" style="width: 50px; height: auto;">
+                                                <img src="../user/<?php echo $show->foto_aluno; ?>" alt="Foto do Aluno" style="width: 50px; height: auto;">
                                             <?php else: ?>
                                                 <img src="../images/user.jpeg" alt="Foto do Aluno" style="width: 50px; height: auto;">
                                             <?php endif; ?>

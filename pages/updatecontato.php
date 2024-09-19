@@ -45,13 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $allowedExts = ['jpg', 'jpeg', 'png', 'webp'];
 
         if (in_array($fileExtension, $allowedExts)) {
-            $fotoPath = $uploadDir . basename($fileName);
+            $fotoPath = uniqid() . ".{$fileExtension}";
             
             if ($aluno->foto_aluno !== $uploadDir . $userImage && file_exists($aluno->foto_aluno)) {
-                unlink($aluno->foto_aluno);
+                unlink( $uploadDir. $fotoPath );
             }
             
-            if (move_uploaded_file($fileTmpPath, $fotoPath)) {
+            if (move_uploaded_file($fileTmpPath,$uploadDir.$fotoPath)) {
                 
             } else {
                 $mensagem = "Erro ao carregar a foto.";
