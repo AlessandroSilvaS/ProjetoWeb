@@ -53,6 +53,7 @@ include_once "../conexao.php";
                     </thead>
                     <tbody>
                         <?php
+
                         $limit = 4;
                         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                         $page = max($page, 1);
@@ -69,7 +70,6 @@ include_once "../conexao.php";
 
 
                         $totalPages = ceil($totalRows / $limit);
-
 
                         $select = "SELECT * FROM tb_aluno WHERE aluno_nome LIKE :searchTerm OR aluno_email LIKE :searchTerm ORDER BY id_aluno DESC LIMIT :limit OFFSET :offset";
                         try {

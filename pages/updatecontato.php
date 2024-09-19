@@ -1,6 +1,5 @@
 <?php
 include_once "../conexao.php"; 
-
 $mensagem = "";
 
 if (isset($_GET['id'])) {
@@ -36,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fotoPath = $aluno->foto_aluno;
     $uploadDir = '../user/';
     $userImage = 'user.jpeg'; 
-
+  
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
         $fileTmpPath = $_FILES['foto']['tmp_name'];
         $fileName = $_FILES['foto']['name'];
@@ -138,6 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p>&copy; <?php echo date('Y'); ?> Todos os direitos reservados.</p>
         <p><strong>Git Hub </strong><a href="https://github.com/AlessandroSilvaS/ProjetoWeb" class="text-white"><i class="bi bi-github"></i></a></p>
     </footer>
+    
     <script>
         window.onload = function() {
             var messageElement = document.getElementById('message');
