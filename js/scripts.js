@@ -22,7 +22,6 @@ async function getDatas(){
     } catch (error) {
         // Exibe qualquer erro que ocorra durante a requisição ou o processamento
         console.error('Erro:', error);
-        // Adicione tratamento de erros aqui
     }
 }
 
