@@ -2,7 +2,7 @@
     width: 80%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(5, 200px);
+    grid-template-columns: repeat(7, 200px);
     gap: 20px;
 }
 .card-course{
@@ -19,7 +19,7 @@
 .card-course .card-Body .title-course{
     text-align: center;
     margin-top: 10px;
-    font-size: 20px;
+    font-size: 16px;
 }
 .card-course .card-Footer{
     width: 80px;

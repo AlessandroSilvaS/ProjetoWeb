@@ -11,130 +11,44 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styleMainPage/stylesMain.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/styleMainPage/headerStyle.css">
         <link rel="stylesheet" href="css/styleMainPage/cardStyle.css">
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container_px-4_px-lg-5">
+        <nav>
+            <div class="nav-container-master">
                 <div class="container-buttons">
-                    <button class="add" style="background-color: green;">
-                        <i class="bi bi-plus"></i>
+                    <button class="add">
+                    <a href="pages/addCourse.php" class="link-icon"><i class="bi bi-plus"></i></a> 
                     </button>
-                    <button class="rem" style="background-color: red;">
-                        <i class="bi bi-dash"></i>
+                    <button class="rem">
+                    <a href="pages/remCourse.php" class="link-icon"><i class="bi bi-dash"></i></a>
                     </button>
                 </div>
-                <h2>Bem vindo(a) professor(a)!</h2>
+                <h1>Bem vindo(a) professor(a)!</h1>
             </div>
         </nav>
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="btn-areas-container">
-                <button class="btn-areas" style="background-color: rgb(219, 252, 33);">EDUCAÇÃO</button>
-                <button class="btn-areas" style="background-color: rgba(248, 112, 0, 0.986)">NEGÓCIOS</button>
-                <button class="btn-areas"  style="background-color: rgb(71, 224, 57);">SAÚDE</button>
-                <button class="btn-areas" style="background-color: rgb(3, 146, 212)" >TECNOLOGIA</button>
-            </div>
-        </header>
         <!-- Section-->
         <section class="py-5">
-                        <div class="cards-main-container">
-                        <div class="card-course">
+            <div class="cards-main-container">
+               <!-- <div class="card-course">
                             <div class="card-Img">
                                 <img src="images/default.webp" alt="Course image">
                             </div>
                             <div class="card-Body">
                                 <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
                             </div>
                             <div class="card-Footer">
                                 <a href="#" class="card-Link">Ver curso</a>
                             </div>
-                        </div>
-                        <div class="card-course">
-                            <div class="card-Img">
-                                <img src="images/default.webp">
-                            </div>
-                            <div class="card-Body">
-                                <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
-                            </div>
-                            <div class="card-Footer">
-                                <a href="#" class="card-Link">Ver curso</a>
-                            </div>
-                        </div>
-                        <div class="card-course">
-                            <div class="card-Img">
-                                <img src="images/default.webp" alt="Course image">
-                            </div>
-                            <div class="card-Body">
-                                <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
-                            </div>
-                            <div class="card-Footer">
-                                <a href="#" class="card-Link">Ver curso</a>
-                            </div>
-                        </div>
-                        <div class="card-course">
-                            <div class="card-Img">
-                                <img src="images/default.webp" alt="Course image">
-                            </div>
-                            <div class="card-Body">
-                                <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
-                            </div>
-                            <div class="card-Footer">
-                                <a href="#" class="card-Link">Ver curso</a>
-                            </div>
-                        </div>
-                        <div class="card-course">
-                            <div class="card-Img">
-                                <img src="images/default.webp" alt="Course image">
-                            </div>
-                            <div class="card-Body">
-                                <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
-                            </div>
-                            <div class="card-Footer">
-                                <a href="#" class="card-Link">Ver curso</a>
-                            </div>
-                        </div>
-                        <div class="card-course">
-                            <div class="card-Img">
-                                <img src="images/default.webp" alt="Course image">
-                            </div>
-                            <div class="card-Body">
-                                <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
-                            </div>
-                            <div class="card-Footer">
-                                <a href="#" class="card-Link">Ver curso</a>
-                            </div>
-                        </div>
-                        <div class="card-course">
-                            <div class="card-Img">
-                                <img src="images/default.webp" alt="Course image">
-                            </div>
-                            <div class="card-Body">
-                                <p class="title-course">Titulo do curso</p>
-                                <!--more contents here-->
-                            </div>
-                            <div class="card-Footer">
-                                <a href="#" class="card-Link">Ver curso</a>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    
-                    
-                </div>
+                        
+                        </div>-->
+            </div>
         </section>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">&copy; Feito para projeto de programação web.</p></div>
+        <footer>
+            <p class="m-0 text-center text-white">&copy; Feito para projeto de programação web.</p>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
