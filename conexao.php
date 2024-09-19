@@ -2,7 +2,7 @@
 $host="localhost";
 $user ="root";
 $pass ="bdjmf";
-$dbname = "bdCursos_Alunos";
+$dbname = "bdcursos_alunos";
 
 try {
     // Conectar ao banco de dados com PDO
