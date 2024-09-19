@@ -10,7 +10,6 @@ async function getDatas(){
 
         // Converte a resposta para JSON
         const data = await response.json();
-        console.log(data);
 
         //Verifica se os dados são válidos
         if (!Array.isArray(data)) {
@@ -64,7 +63,7 @@ function showCardsCourse(valores) {
             idCourse = value.id_curso
             const footerLink = document.createElement('a');
             footerLink.className = 'card-Link';
-            footerLink.href = 'pages/showCorseInd.php?id=idCourse';
+            footerLink.href = `pages/showCorseInd.php?id=${idCourse}`;
             footerLink.textContent = 'Ver curso'; // Texto do link
     
             // Anexa os elementos ao card
@@ -78,4 +77,4 @@ function showCardsCourse(valores) {
             cardsContainer.appendChild(card);
         });
     }
-getDatas()
+getDatas() //Chama a função getDatas
