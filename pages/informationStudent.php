@@ -52,21 +52,25 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
     <div class="menu">
         <ul>
             <li class="menu-item" id="item1">
-                <a href="#">01. Criatividade e inovação</a>
+                <a href="#">01. Titulo</a>
                 <ul class="submenu">
-                    <li><a href="#">01. Vídeo 01: O que é criatividade</a></li>
-                    <li><a href="#">02. Vídeo 02: Estimulando criatividade</a></li>
+                    <li><a href="#">01. Subtitulo</a></li>
+                    <li><a href="#">02. Subtitulo</a></li>
                 </ul>
             </li>
             <li class="menu-item" id="item2">
-                <a href="#">02. Empreendedorismo</a>
+                <a href="#">02. Titulo</a>
                 <ul class="submenu">
-                    <li><a href="#">01. Vídeo 01: O que é empreendedorismo?</a></li>
-                    <li><a href="#">02. Casos de sucesso</a></li>
+                <li><a href="#">01. Subtitulo</a></li>
+                    <li><a href="#">02. Subtitulo</a></li>
                 </ul>
             </li>
-            <li class="menu-item">
-                <a href="#">03. Geração de Ideias</a>
+            <li class="menu-item" id="item2">
+                <a href="#">02. Titulo</a>
+                <ul class="submenu">
+                <li><a href="#">01. Subtitulo</a></li>
+                    <li><a href="#">02. Subtitulo</a></li>
+                </ul>
             </li>
         </ul>
     </div>
