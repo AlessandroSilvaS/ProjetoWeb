@@ -130,7 +130,7 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
                 </select>
 
                 <label for="cpf">CPF:</label>
-                <input type="number" id="cpf" name="cpf"   required oninput="aplicarMascaraCPF(event)" />
+                <input type="number" id="cpf" name="cpf"   required oninput="aplicarMascaraCPF(event)" >
 
                 <label for="course">Curso:</label>
                 <input type="text" id="course" name="course" required />
@@ -147,5 +147,6 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
         <p>&copy; <?php echo date('Y'); ?> Todos os direitos reservados.</p>
         <p><strong>Git Hub </strong><a href="https://github.com/AlessandroSilvaS/ProjetoWeb" class="text-white"><i class="bi bi-github"></i></a></p>
     </footer>
+    <script src="../js/registration.js"></script>
 </body>
 </html>
