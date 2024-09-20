@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['name'], $_POST['email'], $_POST['age'], $_POST['gender'], $_POST['class'], $_POST['course'], $_POST['password'])) {
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $age = $_POST['age'];
+        $nasc = $_POST['age'];
         $gender = $_POST['gender'];
         $cpf = $_POST['class'];
         $course = $_POST['course'];
@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Move o arquivo para o diretório de destino
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
                 // Prepara a consulta SQL para inserir os dados
-                $stmt = $conn->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_email, aluno_senha, aluno_cpf, aluno_genero, aluno_nascimento, curso_status, foto_aluno) VALUES (?, ?, ?, ?,?, CURDATE(), ?, ?)");
-                $stmt->execute([$name, $email, $hashedPassword, $gender, $cpf, 'Em andamento', $fileName]);
+                $stmt = $conn->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_nascimento, aluno_email, aluno_senha, aluno_cpf, aluno_genero, aluno_nascimento, curso_status, foto_aluno) VALUES (?, ?, ?, ?, ?, ?, CURDATE(), ?, ?)");
+                $stmt->execute([$name, $email, $nasc, $hashedPassword, $gender, $cpf, 'Em andamento', $fileName]);
 
                 echo "Aluno cadastrado com sucesso!";
             } else {
@@ -86,15 +86,15 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
             <h1>Formulário de Matrícula</h1>
             <form action="#" method="post" enctype="multipart/form-data"> <!-- Adicionado enctype -->
                 <label for="image">Imagem</label>
-                <input class="buttonImg" type="file" id="image" name="image" required>
+                <input class="buttonImg" type="file" id="image" name="image">
                 <label for="name">Nome:</label>
                 <input type="text" id="name" name="name" required />
 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required />
 
-                <label for="age">Idade:</label>
-                <input type="number" id="age" name="age" required />
+                <label for="age">Data de Nascimento:</label>
+                <input type="date" id="age" name="age" required />
 
                 <label for="gender">Gênero:</label>
                 <select id="gender" name="gender" required>
