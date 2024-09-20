@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $fileTmpPath = $_FILES['image']['tmp_name'];
             $fileName = $_FILES['image']['name'];
-            $uploadFileDir = '../uploads/'; // Diretório onde as imagens serão salvas
+            $uploadFileDir = '../user/'; // Diretório onde as imagens serão salvas
             $dest_path = $uploadFileDir . basename($fileName);
 
             // Move o arquivo para o diretório de destino
