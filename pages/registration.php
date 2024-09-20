@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Move o arquivo para o diretório de destino
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
                 // Prepara a consulta SQL para inserir os dados
-                $stmt = $pdo->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_email, aluno_senha, aluno_genero, aluno_nascimento, curso_status, aluno_imagem) VALUES (?, ?, ?, ?, CURDATE(), ?, ?)");
+                $stmt = $conn->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_email, aluno_senha, aluno_genero, aluno_nascimento, curso_status, aluno_imagem) VALUES (?, ?, ?, ?, CURDATE(), ?, ?)");
                 $stmt->execute([$name, $email, $hashedPassword, $gender, 'Em andamento', $fileName]);
 
                 echo "Aluno cadastrado com sucesso!";
