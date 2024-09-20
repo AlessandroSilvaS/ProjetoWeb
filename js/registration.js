@@ -21,15 +21,15 @@ function formatarCPF(cpf) {
     // Remove qualquer caractere que não seja número
     cpf = cpf.replace(/\D/g, '');
 
-    // Adiciona a formatação
+    // Adiciona a formatação para CPF
     if (cpf.length <= 3) {
-        return cpf;
+        return cpf; // Retorna os primeiros 3 dígitos
     } else if (cpf.length <= 6) {
-        return cpf.slice(0, 3) + '.' + cpf.slice(3);
+        return cpf.slice(0, 3) + '.' + cpf.slice(3); // Formato XXX.XXX
     } else if (cpf.length <= 9) {
-        return cpf.slice(0, 3) + '.' + cpf.slice(3, 6) + '.' + cpf.slice(6);
+        return cpf.slice(0, 3) + '.' + cpf.slice(3, 6) + '.' + cpf.slice(6); // Formato XXX.XXX.XXX
     } else {
-        return cpf.slice(0, 3) + '.' + cpf.slice(3, 6) + '.' + cpf.slice(6, 9) + '-' + cpf.slice(9, 11);
+        return cpf.slice(0, 3) + '.' + cpf.slice(3, 6) + '.' + cpf.slice(6, 9) + '-' + cpf.slice(9, 11); // Formato XXX.XXX.XXX-XX
     }
 }
 
@@ -38,3 +38,9 @@ function aplicarMascaraCPF(event) {
     const valor = input.value;
     input.value = formatarCPF(valor);
 }
+
+// Vincula a função de máscara ao evento input
+document.addEventListener('DOMContentLoaded', function () {
+    const cpfInput = document.getElementById('cpf');
+    cpfInput.addEventListener('input', aplicarMascaraCPF);
+});

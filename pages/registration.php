@@ -130,7 +130,7 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
                 </select>
 
                 <label for="cpf">CPF:</label>
-                <input type="number" id="cpf" name="cpf"   required oninput="aplicarMascaraCPF(event)" >
+                <input type="text" id="cpf" name="cpf"   required oninput="aplicarMascaraCPF(event)" >
 
                 <label for="course">Curso:</label>
                 <input type="text" id="course" name="course" required />
