@@ -103,7 +103,7 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
                     <option value="outro">Outro</option>
                 </select>
 
-                <label for="class">Turma:</label>
+                <label for="class">CPF:</label>
                 <input type="text" id="class" name="class" required />
 
                 <label for="course">Curso:</label>
