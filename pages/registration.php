@@ -104,7 +104,7 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
                 </select>
 
                 <label for="class">CPF:</label>
-                <input type="text" id="class" name="class" required />
+                <input type="number" id="class" name="class" required />
 
                 <label for="course">Curso:</label>
                 <input type="text" id="course" name="course" required />
