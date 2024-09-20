@@ -83,6 +83,8 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulário de Matrícula</title>
     <link rel="stylesheet" href="../css/registration.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </head>
 <body>
     <!-- Navbar -->
@@ -141,5 +143,9 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
         </section>
         <img class="imageRegistration" src="../images/registration1.png" alt="">
     </main>
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <p>&copy; <?php echo date('Y'); ?> Todos os direitos reservados.</p>
+        <p><strong>Git Hub </strong><a href="https://github.com/AlessandroSilvaS/ProjetoWeb" class="text-white"><i class="bi bi-github"></i></a></p>
+    </footer>
 </body>
 </html>
