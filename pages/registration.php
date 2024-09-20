@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Move o arquivo para o diretório de destino
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
                 // Prepara a consulta SQL para inserir os dados
-                $stmt = $conn->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_nascimento, aluno_email, aluno_senha, aluno_cpf, aluno_genero, aluno_nascimento, curso_status, foto_aluno) VALUES (?, ?, ?, ?, ?, ?, CURDATE(), ?, ?)");
-                $stmt->execute([$name, $email, $nasc, $hashedPassword, $gender, $cpf, 'Em andamento', $fileName]);
+                $stmt = $conn->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_nascimento, aluno_email, aluno_senha, aluno_cpf, aluno_genero, curso_status, foto_aluno) VALUES (?, CURDATE(), ?, ?, ?, ?, ?)");
+                $stmt->execute([$name,  $nasc,$email, $hashedPassword, $gender, $cpf, 'Em andamento', $fileName]);
 
                 echo "Aluno cadastrado com sucesso!";
             } else {
