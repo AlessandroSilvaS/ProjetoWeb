@@ -14,14 +14,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Verifica se o formulário foi enviado
-    if (isset($_POST['name'], $_POST['email'], $_POST['age'], $_POST['gender'], $_POST['class'], $_POST['course'], $_POST['password'])) {
+    if (isset($_POST['name'], $_POST['email'], $_POST['age'], $_POST['gender'], $_POST['cpf'], $_POST['course'], $_POST['password'])) {
         $name = $_POST['name'];
         $email = $_POST['email'];
         $nasc = $_POST['age'];
         $gender = $_POST['gender'];
-        $cpf = $_POST['class'];
+        $cpf = $_POST['cpf'];
         $course = $_POST['course'];
         $password = $_POST['password'];
+
+        // Formata o CPF
+        $cpfFormatado = formatarCPF($cpf);
+
+        // Verifica se o CPF é válido após formatação
+        if ($cpfFormatado === "CPF inválido") {
+            echo $cpfFormatado;
+            exit;
+        }
 
         // Hash da senha
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -36,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Move o arquivo para o diretório de destino
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
                 // Prepara a consulta SQL para inserir os dados
-                $stmt = $conn->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_nascimento, aluno_email, aluno_senha, aluno_cpf, aluno_genero, curso_status, foto_aluno) VALUES (?, CURDATE(), ?, ?, ?, ?, ?)");
-                $stmt->execute([$name,  $nasc,$email, $hashedPassword, $gender, $cpf, 'Em andamento', $fileName]);
+                $stmt = $conn->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_nascimento, aluno_email, aluno_senha, aluno_cpf, aluno_genero, aluno_nascimento, curso_status, foto_aluno) VALUES (?, ?, ?, ?, ?, ?, CURDATE(), ?, ?)");
+                $stmt->execute([$name, $email, $nasc, $hashedPassword, $gender, $cpf, 'Em andamento', $fileName]);
 
                 echo "Aluno cadastrado com sucesso!";
             } else {
@@ -47,6 +56,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Nenhuma imagem foi enviada ou ocorreu um erro no upload.";
         }
     }
+}
+
+// Função para formatar CPF
+function formatarCPF($cpf) {
+    // Remove qualquer caractere que não seja número
+    $cpf = preg_replace('/[^0-9]/', '', $cpf);
+    
+    // Verifica se o CPF tem 11 dígitos
+    if (strlen($cpf) != 11) {
+        return "CPF inválido";
+    }
+
+    // Formata o CPF
+    return preg_replace('/^(\d{3})(\d{3})(\d{3})(\d{2})$/', '$1.$2.$3-$4', $cpf);
 }
 
 // Define o estado dos menus
@@ -84,9 +107,10 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
     <main class="main-content">
         <section class="registration-box">
             <h1>Formulário de Matrícula</h1>
-            <form action="#" method="post" enctype="multipart/form-data"> <!-- Adicionado enctype -->
+            <form action="#" method="post" enctype="multipart/form-data">
                 <label for="image">Imagem</label>
-                <input class="buttonImg" type="file" id="image" name="image">
+                <input class="buttonImg" type="file" id="image" name="image" required>
+                
                 <label for="name">Nome:</label>
                 <input type="text" id="name" name="name" required />
 
@@ -103,8 +127,8 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
                     <option value="outro">Outro</option>
                 </select>
 
-                <label for="class">CPF:</label>
-                <input type="number" id="class" name="class" required />
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf"  required oninput="aplicarMascaraCPF(event)" />
 
                 <label for="course">Curso:</label>
                 <input type="text" id="course" name="course" required />

@@ -16,3 +16,24 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+function formatarCPF(cpf) {
+    // Remove qualquer caractere que não seja número
+    cpf = cpf.replace(/\D/g, '');
+
+    // Adiciona a formatação
+    if (cpf.length <= 3) {
+        return cpf;
+    } else if (cpf.length <= 6) {
+        return cpf.slice(0, 3) + '.' + cpf.slice(3);
+    } else if (cpf.length <= 9) {
+        return cpf.slice(0, 3) + '.' + cpf.slice(3, 6) + '.' + cpf.slice(6);
+    } else {
+        return cpf.slice(0, 3) + '.' + cpf.slice(3, 6) + '.' + cpf.slice(6, 9) + '-' + cpf.slice(9, 11);
+    }
+}
+
+function aplicarMascaraCPF(event) {
+    const input = event.target;
+    const valor = input.value;
+    input.value = formatarCPF(valor);
+}
