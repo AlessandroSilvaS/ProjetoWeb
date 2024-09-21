@@ -1,5 +1,6 @@
 <?php
 include_once "../conexao.php";
+include_once "../includes/bootstrap.php"
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -7,7 +8,6 @@ include_once "../conexao.php";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gerenciamento de Perfis</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="icon" href="../images/icon.webp">
     <link rel="stylesheet" href="../css/classroom.css" />
 </head>

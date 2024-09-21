@@ -1,5 +1,6 @@
 <?php
 include_once "../conexao.php"; 
+include_once "../includes/bootstrap.php";
 $mensagem = "";
 
 if (isset($_GET['id'])) {
@@ -36,56 +37,60 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $uploadDir = '../user/';
     $userImage = 'user.jpeg'; 
   
-    if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
-        $fileTmpPath = $_FILES['foto']['tmp_name'];
-        $fileName = $_FILES['foto']['name'];
-        $fileNameCmps = explode('.', $fileName);
-        $fileExtension = strtolower(end($fileNameCmps));
-        
-        $allowedExts = ['jpg', 'jpeg', 'png', 'webp'];
+    // ... (código anterior)
 
-        if (in_array($fileExtension, $allowedExts)) {
-            $fotoPath = uniqid() . ".{$fileExtension}";
-            
-            if ($aluno->foto_aluno !== $uploadDir . $userImage && file_exists($aluno->foto_aluno)) {
-                unlink( $uploadDir. $fotoPath );
-            }
-            
-            if (move_uploaded_file($fileTmpPath,$uploadDir.$fotoPath)) {
-                
-            } else {
-                $mensagem = "Erro ao carregar a foto.";
-            }
-        } else {
-            $mensagem = "Formato de arquivo não permitido. Apenas JPG, JPEG, PNG, e WEBP são aceitos.";
+// Para a parte da imagem
+if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+    $fileTmpPath = $_FILES['foto']['tmp_name'];
+    $fileName = $_FILES['foto']['name'];
+    $fileNameCmps = explode('.', $fileName);
+    $fileExtension = strtolower(end($fileNameCmps));
+
+    $allowedExts = ['jpg', 'jpeg', 'png', 'webp'];
+
+    if (in_array($fileExtension, $allowedExts)) {
+        $fotoPath = uniqid() . ".{$fileExtension}";
+
+        // Verifica se a foto atual não é a padrão e se o arquivo existe antes de deletar
+        if ($aluno->foto_aluno !== $uploadDir . $userImage && file_exists($aluno->foto_aluno)) {
+            unlink($aluno->foto_aluno); // Deletar a foto antiga
         }
-    }
 
-    $senha_hash = !empty($senha) ? password_hash($senha, PASSWORD_BCRYPT) : $aluno->aluno_senha;
-
-    if ($nome !== $aluno->aluno_nome || $email !== $aluno->aluno_email || $status_curso !== $aluno->curso_status || $senha !== '' || $fotoPath !== $aluno->foto_aluno) {
-        $update = "UPDATE tb_aluno SET aluno_nome = :nome, aluno_email = :email, aluno_senha = :senha, curso_status = :status_curso, foto_aluno = :foto WHERE id_aluno = :id_aluno";
-        try {
-            $stmt = $conn->prepare($update);
-            $stmt->bindParam(':nome', $nome);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':status_curso', $status_curso);
-            $stmt->bindParam(':senha', $senha_hash);
-            $stmt->bindParam(':foto', $fotoPath);
-            $stmt->bindParam(':id_aluno', $id_aluno, PDO::PARAM_INT);
-
-            if ($stmt->execute()) {
-                header("Location: classroom.php");
-                exit;
-            } else {
-                $mensagem = "Erro ao atualizar o aluno.";
-            }
-        } catch (PDOException $e) {
-            $mensagem = "Erro ao atualizar aluno: " . $e->getMessage();
+        if (move_uploaded_file($fileTmpPath, $uploadDir . $fotoPath)) {
+            // Sucesso no upload
+        } else {
+            $mensagem = "Erro ao carregar a foto.";
         }
     } else {
-        $mensagem = "Nenhuma alteração detectada.";
+        $mensagem = "Formato de arquivo não permitido. Apenas JPG, JPEG, PNG, e WEBP são aceitos.";
     }
+}
+
+// ... (restante do código)
+
+if ($nome !== $aluno->aluno_nome || $email !== $aluno->aluno_email || $status_curso !== $aluno->curso_status || $senha !== '' || $fotoPath !== $aluno->foto_aluno) {
+    $update = "UPDATE tb_aluno SET aluno_nome = :nome, aluno_email = :email, aluno_senha = :senha, curso_status = :status_curso, foto_aluno = :foto WHERE id_aluno = :id_aluno";
+    try {
+        $stmt = $conn->prepare($update);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':status_curso', $status_curso);
+        $stmt->bindParam(':senha', $senha_hash);
+        $stmt->bindParam(':foto', $fotoPath);
+        $stmt->bindParam(':id_aluno', $id_aluno, PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            header("Location: classroom.php");
+            exit;
+        } else {
+            $mensagem = "Erro ao atualizar o aluno.";
+        }
+    } catch (PDOException $e) {
+        $mensagem = "Erro ao atualizar aluno: " . $e->getMessage();
+    }
+} else {
+    $mensagem = "Nenhuma alteração detectada.";
+}
 }
 ?>
 
@@ -98,13 +103,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Aluno</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
     <link rel="stylesheet" href="../css/updatecontato.css">
     <link rel="stylesheet" href="../gif/update/update-styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    
 </head>
 
 <body>
