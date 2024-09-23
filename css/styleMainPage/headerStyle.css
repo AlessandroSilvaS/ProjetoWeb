@@ -8,9 +8,27 @@ nav {
     height: 150px;
     background-color: #275aff;
     margin-bottom: 150px;
+    display: flex;
+    justify-content: space-between;
+}
+nav .nav-container-secondary{
+    margin: 40px;
+}
+nav .nav-container-secondary button{
+    width: 80px;
+    height: 70px;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    background-color: #3d6bff;
+    color: #fff;
+    transition: background-color 0.5s ease-in-out;
+}
+nav .nav-container-secondary button:hover{
+    background-color: #5b80fc;
 }
 nav .nav-container-master{
-    width: 70%;
+    min-width: 70%;
     height: 100%;
     display: flex;
     justify-content: space-between;
