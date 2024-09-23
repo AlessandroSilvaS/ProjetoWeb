@@ -1,22 +1,22 @@
 <?php
-include '../conexao.php';
+// include '../conexao.php';
 
-// Obter o ID do curso da URL
-$id_curso = $_GET['id'];
-// Consultar o curso no banco de dados
-$sql = "SELECT * FROM tb_curso WHERE id_curso = :id";
-$stmt = $conn->prepare($sql);
-$stmt->bindParam(':id', $id_curso);
-$stmt->execute();
+// // Obter o ID do curso da URL
+// $id_curso = $_GET['id'];
+// // Consultar o curso no banco de dados
+// $sql = "SELECT * FROM tb_curso WHERE id_curso = :id";
+// $stmt = $conn->prepare($sql);
+// $stmt->bindParam(':id', $id_curso);
+// $stmt->execute();
 
-// Obter as informações do curso
-$curso = $stmt->fetch(PDO::FETCH_ASSOC);
+// // Obter as informações do curso
+// $curso = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Verificar se o curso existe
-if (!$curso) {
-    echo "Curso não encontrado.";
-    exit;
-}
+// // Verificar se o curso existe
+// if (!$curso) {
+//     echo "Curso não encontrado.";
+//     exit;
+// }
 ?>
 
 <!DOCTYPE html>

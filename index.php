@@ -14,6 +14,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link rel="stylesheet" href="css/styleMainPage/headerStyle.css">
         <link rel="stylesheet" href="css/styleMainPage/cardStyle.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     </head>
     <body>
         <!-- Navigation-->
@@ -21,18 +22,27 @@
             <div class="nav-container-master">
                 <div class="container-buttons">
                     <button class="add">
-                    <a href="pages/addCourse.php" class="link-icon"><i class="bi bi-plus"></i></a> 
+                        <a href="pages/addCourse.php" class="link-icon"><i class="bi bi-plus"></i></a> 
                     </button>
                     <button class="rem">
-                    <a href="pages/remCourse.php" class="link-icon"><i class="bi bi-dash"></i></a>
+                        <a href="pages/remCourse.php" class="link-icon"><i class="bi bi-dash"></i></a>
                     </button>
                 </div>
                 <h1>Bem vindo(a) professor(a)!</h1>
             </div>
             <div class="nav-container-secondary">
-                <button class="menu">botão</button>
+                <button class="menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
             </div>
         </nav>
+        <!-- <div class="show-Container">
+            <div class="show-link">
+                <a href="/pages/classroom.php">Sala de aula</a>
+            </div>
+            <div class="show-link"></div>
+            <div class="show-link"></div>
+        </div> -->
         <!-- Section-->
         <section class="py-5">
             <div class="cards-main-container">
