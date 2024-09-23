@@ -33,7 +33,7 @@ body {
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 3px 3px #949393;
-    margin-left: 150px;
+    margin-left: 250px;
 }
 
 .container-main form {
@@ -87,6 +87,10 @@ body {
     position: absolute;
     margin-left: -30px;
     margin-top: 27px;
+}
+
+.cadastro{
+    margin-top: 1rem;
 }
 
 /* Responsividade */

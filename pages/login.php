@@ -45,7 +45,12 @@ include_once "../includes/bootstrap.php"
                         <label for="diretor">Diretor</label>
                     </div>
                 </div>
+               
                 <input type="submit"  value="ENTRAR" class="submit-button" name="SendLogin">
+
+                <div class="cadastro">
+                    <p>Não tem conta? <a href="cadatro.php">Cadastre-se</a></p>
+                </div>
             </form>
             <?php
             $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);

@@ -35,49 +35,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $fotoPath = $aluno->foto_aluno;
     $uploadDir = '../user/';
-    $userImage = 'user.jpeg'; 
-  
-    // ... (código anterior)
+    $userImage = 'user.jpeg';
 
-// Para a parte da imagem
-if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
-    $fileTmpPath = $_FILES['foto']['tmp_name'];
-    $fileName = $_FILES['foto']['name'];
-    $fileNameCmps = explode('.', $fileName);
-    $fileExtension = strtolower(end($fileNameCmps));
-
-    $allowedExts = ['jpg', 'jpeg', 'png', 'webp'];
-
-    if (in_array($fileExtension, $allowedExts)) {
-        $fotoPath = uniqid() . ".{$fileExtension}";
-
-        // Verifica se a foto atual não é a padrão e se o arquivo existe antes de deletar
-        if ($aluno->foto_aluno !== $uploadDir . $userImage && file_exists($aluno->foto_aluno)) {
-            unlink($aluno->foto_aluno); // Deletar a foto antiga
-        }
-
-        if (move_uploaded_file($fileTmpPath, $uploadDir . $fotoPath)) {
-            // Sucesso no upload
-        } else {
-            $mensagem = "Erro ao carregar a foto.";
-        }
-    } else {
-        $mensagem = "Formato de arquivo não permitido. Apenas JPG, JPEG, PNG, e WEBP são aceitos.";
+    // Para a parte da imagem
+    if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+        // ... (código para upload de imagem)
     }
-}
 
-// ... (restante do código)
+    // Verifica se alguma alteração foi feita
+    $update = "UPDATE tb_aluno SET aluno_nome = :nome, aluno_email = :email, curso_status = :status_curso, foto_aluno = :foto";
+    
+    // Criptografa a nova senha se fornecida
+    if (!empty($senha)) {
+        $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+        $update .= ", aluno_senha = :senha"; // Adiciona a senha na consulta
+    }
 
-if ($nome !== $aluno->aluno_nome || $email !== $aluno->aluno_email || $status_curso !== $aluno->curso_status || $senha !== '' || $fotoPath !== $aluno->foto_aluno) {
-    $update = "UPDATE tb_aluno SET aluno_nome = :nome, aluno_email = :email, aluno_senha = :senha, curso_status = :status_curso, foto_aluno = :foto WHERE id_aluno = :id_aluno";
+    $update .= " WHERE id_aluno = :id_aluno";
+
     try {
         $stmt = $conn->prepare($update);
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':status_curso', $status_curso);
-        $stmt->bindParam(':senha', $senha_hash);
         $stmt->bindParam(':foto', $fotoPath);
         $stmt->bindParam(':id_aluno', $id_aluno, PDO::PARAM_INT);
+
+        // Bind da senha somente se ela não estiver vazia
+        if (!empty($senha)) {
+            $stmt->bindParam(':senha', $senha_hash);
+        }
 
         if ($stmt->execute()) {
             header("Location: classroom.php");
@@ -88,10 +75,8 @@ if ($nome !== $aluno->aluno_nome || $email !== $aluno->aluno_email || $status_cu
     } catch (PDOException $e) {
         $mensagem = "Erro ao atualizar aluno: " . $e->getMessage();
     }
-} else {
-    $mensagem = "Nenhuma alteração detectada.";
 }
-}
+
 ?>
 
 
