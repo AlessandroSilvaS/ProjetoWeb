@@ -91,7 +91,6 @@ include_once "../includes/bootstrap.php"
     $result_user->execute();
     if ($result_user && $result_user->rowCount() != 0) {
         $row_user = $result_user->fetch(PDO::FETCH_ASSOC);
-        // Verifique a senha usando password_verify
         $storedPasswordHash = $row_user['aluno_senha'] ?? $row_user['caduser_senha'] ?? $row_user['senha_diretor'];
         
         if (password_verify($password, $storedPasswordHash)) {

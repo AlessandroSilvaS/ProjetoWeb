@@ -1,22 +1,22 @@
 <?php
-// include '../conexao.php';
+include '../conexao.php';
 
-// // Obter o ID do curso da URL
-// $id_curso = $_GET['id'];
-// // Consultar o curso no banco de dados
-// $sql = "SELECT * FROM tb_curso WHERE id_curso = :id";
-// $stmt = $conn->prepare($sql);
-// $stmt->bindParam(':id', $id_curso);
-// $stmt->execute();
+// Obter o ID do curso da URL
+$id_curso = $_GET['id'];
+// Consultar o curso no banco de dados
+$sql = "SELECT * FROM tb_curso WHERE id_curso = :id";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':id', $id_curso);
+$stmt->execute();
 
-// // Obter as informações do curso
-// $curso = $stmt->fetch(PDO::FETCH_ASSOC);
+// Obter as informações do curso
+$curso = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// // Verificar se o curso existe
-// if (!$curso) {
-//     echo "Curso não encontrado.";
-//     exit;
-// }
+// Verificar se o curso existe
+if (!$curso) {
+    echo "Curso não encontrado.";
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +51,7 @@
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             background-color: #fff;
             padding: 20px;
@@ -89,11 +89,9 @@
 
         <div class="grid-container">
             <div class="grid-header">Nome do Curso</div>
-            <div class="grid-header">Instrutor</div>
             <div class="grid-header">Descrição</div>
 
             <div class="grid-item"><?php echo htmlspecialchars($curso['curso_nome']); ?></div>
-            <div class="grid-item"><?php echo htmlspecialchars($curso['instrutor']); ?></div>
             <div class="grid-item"><?php echo htmlspecialchars($curso['curso_descricao']); ?></div>
         </div>
     </div>

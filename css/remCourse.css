@@ -24,6 +24,7 @@ form {
 }
 #nome_curso{
     width: 600px;
+    height: 30px;
 }
 .form-group {
     margin-bottom: 15px;
