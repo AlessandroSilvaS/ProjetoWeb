@@ -28,7 +28,7 @@
                         <a href="pages/remCourse.php" class="link-icon"><i class="bi bi-dash"></i></a>
                     </button>
                 </div>
-                <h1>Bem vindo(a) professor(a)!</h1>
+                <h1>Bem vindo(a) Diretor(a)!</h1>
             </div>
             <div class="nav-container-secondary">
                 <button class="menu">
