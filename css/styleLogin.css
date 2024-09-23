@@ -42,7 +42,7 @@ body {
 
 .container-main form label.main-label {
     font-size: 25px;
-    
+    margin-top: 10px;
 }
 
 .container-main form .main-input {
@@ -55,7 +55,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 50px;
     padding: 0 30px;
 }
 
@@ -82,12 +82,6 @@ body {
     color: #189ac5;
 }
 
-.bi.bi-envelope-fill, .bi.bi-incognito {
-    color: #949393;
-    position: absolute;
-    margin-left: -30px;
-    margin-top: 27px;
-}
 
 .cadastro{
     margin-top: 1rem;
@@ -97,6 +91,9 @@ body {
 @media (max-width: 992px) {
     .pai {
         justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .box {
@@ -112,11 +109,6 @@ body {
     }
     .bi.bi-envelope-fill, .bi.bi-incognito{
         margin-top: 27px;
-    }
-    .pai {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Alinha itens no centro */
     }
     .container-main form .submit-button {
         margin-top: 20px;
@@ -135,6 +127,9 @@ body {
 @media (max-width: 1339px) {
     .pai {
         justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .box {
@@ -150,11 +145,6 @@ body {
     }
     .bi.bi-envelope-fill, .bi.bi-incognito{
         margin-top: 27px;
-    }
-    .pai {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Alinha itens no centro */
     }
     .container-main form .submit-button {
         margin-top: 20px;

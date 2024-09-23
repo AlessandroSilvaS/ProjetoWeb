@@ -26,11 +26,11 @@ include_once "../includes/bootstrap.php"
             <form action="" method="post">
                 <label for="username" class="main-label">Usuário (Email):</label>
                 <br>
-                <input type="email" class="form-control"name="username" class="main-input" required>
+                <input type="email" class="form-control"name="username" class="main-input" placeholder="Ex:Ana@gmail.com" required>
                 <br>
                 <label  class="main-label">Senha:</label>
                 <br>
-                <input class="form-control" type="password" name="password" class="main-input" required>
+                <input class="form-control" type="password" name="password" class="main-input" placeholder="Ex:12345678" required>
                 <div class="type-user">
                     <div class="student-type">
                         <input class="form-check-input" type="checkbox" id="aluno" name="aluno">
@@ -49,7 +49,7 @@ include_once "../includes/bootstrap.php"
                 <input type="submit"  value="ENTRAR" class="submit-button" name="SendLogin">
 
                 <div class="cadastro">
-                    <p>Não tem conta? <a href="cadatro.php">Cadastre-se</a></p>
+                    <p>Não tem conta? <a href="cadastro.php">Cadastre-se</a></p>
                 </div>
             </form>
             <?php
@@ -70,7 +70,7 @@ include_once "../includes/bootstrap.php"
                 } 
             
             else {
-        $_SESSION['msg'] ='<div class="alert alert-primary" role="alert">
+        $_SESSION['msg'] ='<div style="display:flex; justify-content:space-between;" class="alert alert-primary" role="alert">
         Tipo de Usuário não selecionado!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>';
         header("Location: login.php");
@@ -113,7 +113,7 @@ include_once "../includes/bootstrap.php"
             }
             exit();
         } else {
-            $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">
+            $_SESSION['msg'] = '<div style="display:flex; justify-content:space-between;" class="alert alert-danger" role="alert">
             Senha Incorreta!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div> ';
@@ -121,7 +121,7 @@ include_once "../includes/bootstrap.php"
             exit();
         }
     } else {
-        $_SESSION['msg'] = '<div class="alert alert-warning" role="alert">
+        $_SESSION['msg'] = '<div style="display:flex; justify-content:space-between;" class="alert alert-warning" role="alert">
         Usuário Inválido!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>';
