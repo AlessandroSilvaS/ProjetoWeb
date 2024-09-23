@@ -51,7 +51,7 @@ if (!$curso) {
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             background-color: #fff;
             padding: 20px;
@@ -89,11 +89,9 @@ if (!$curso) {
 
         <div class="grid-container">
             <div class="grid-header">Nome do Curso</div>
-            <div class="grid-header">Instrutor</div>
             <div class="grid-header">Descrição</div>
 
             <div class="grid-item"><?php echo htmlspecialchars($curso['curso_nome']); ?></div>
-            <div class="grid-item"><?php echo htmlspecialchars($curso['instrutor']); ?></div>
             <div class="grid-item"><?php echo htmlspecialchars($curso['curso_descricao']); ?></div>
         </div>
     </div>
