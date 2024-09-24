@@ -1,22 +1,22 @@
 <?php
-include '../conexao.php';
+// include '../conexao.php';
 
-// Obter o ID do curso da URL
-$id_curso = $_GET['id'];
-// Consultar o curso no banco de dados
-$sql = "SELECT * FROM tb_curso WHERE id_curso = :id";
-$stmt = $conn->prepare($sql);
-$stmt->bindParam(':id', $id_curso);
-$stmt->execute();
+// // Obter o ID do curso da URL
+// $id_curso = $_GET['id'];
+// // Consultar o curso no banco de dados
+// $sql = "SELECT * FROM tb_curso WHERE id_curso = :id";
+// $stmt = $conn->prepare($sql);
+// $stmt->bindParam(':id', $id_curso);
+// $stmt->execute();
 
-// Obter as informações do curso
-$curso = $stmt->fetch(PDO::FETCH_ASSOC);
+// // Obter as informações do curso
+// $curso = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Verificar se o curso existe
-if (!$curso) {
-    echo "Curso não encontrado.";
-    exit;
-}
+// // Verificar se o curso existe
+// if (!$curso) {
+//     echo "Curso não encontrado.";
+//     exit;
+// }
 ?>
 
 <!DOCTYPE html>
@@ -45,13 +45,23 @@ if (!$curso) {
             font-size: 40px;
         }
         .curso-info {
-            max-width: 800px;
+            width: 900px;
             margin: 0 auto;
             margin-top: 100px;
+            display: flex;
+            gap: 20px;
+        }
+        .curso-info button{
+            width: 100px;
+            height: 50px;
+            border-radius: 15px;
+            border: none;
+            background-color: #275aff;
+            color: #fff;
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             background-color: #fff;
             padding: 20px;
@@ -84,16 +94,27 @@ if (!$curso) {
     <header>
         <h1>Informações do Curso</h1>
     </header>
+    <h1 style="text-align: center; margin-top: 40px;"><?php echo htmlspecialchars($curso['curso_nome']); ?></h1>
     <div class="curso-info">
-        <h1 style="text-align: center; margin-top: 40px;"><?php echo htmlspecialchars($curso['curso_nome']); ?></h1>
-
+       
         <div class="grid-container">
-            <div class="grid-header">Nome do Curso</div>
+            <div class="grid-header">Curso</div>
             <div class="grid-header">Descrição</div>
+            <div class="grid-header">Carga horário</div>
 
             <div class="grid-item"><?php echo htmlspecialchars($curso['curso_nome']); ?></div>
             <div class="grid-item"><?php echo htmlspecialchars($curso['curso_descricao']); ?></div>
+            <div class="grid-item"><?php echo htmlspecialchars($curso['curso_duracao']); ?></div>
+            <button id="edit" onclick="toEdit()" >EDITAR</button>
         </div>
+
+        
+        
     </div>
+    <script>
+            function toEdit(){
+                window.location.href = "../index.php?id=`${$id_curso}`"
+            }
+        </script>
 </body>
 </html>
