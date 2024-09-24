@@ -96,7 +96,7 @@ INSERT INTO `tb_aluno` (`id_aluno`, `aluno_nome`, `aluno_nascimento`, `aluno_ema
 (2, 'Samara', '2007-08-02', 'samara@gmail.com', '$2y$10$ZC2eRu5tak25GVY1fcuVH.wofh84oMistHTOltNZCL0lOgndkGBDS', '1234567891', 'F', '(85) 992590860', 'Informática', '../user/rapunzel.jpg'),
 (4, 'Pedro Lucas', '2007-03-06', 'pedrowisk@hotmail.com', '$2y$10$wahkCLO4aIjbkJJVvoStb.Ai5S/EFVNyCi8T0SO5osZDyQcqKZJd6', '38458780836', 'M', '(85)997658433', 'Design', '../user/toji.jpg'),
 (5, 'Alecsander', '2007-02-08', 'aleckgogoboy@gmail.com', '$2y$10$ULm9q5a4Vpcs2PF2tNuEdeuS/UsyyCe4VbPP7aKks.IUWOi.5Rwru', '4637438498', 'M', '(85)997654866', 'Análise de Dados', NULL),
-(7, 'Alice Martins', '2007-08-23', 'alice@gmail.com', '$2y$10$JcMvHuorV1D5J9lNHV7dD.NXtiobcGCyHQvudbn9CNnsQvSS4Qbf.', '55649754812', 'F', '(85)534832837', 'Inglês', '../user/barbie.jpg'),
+(7, 'Alice Martins', '2007-08-23', 'alice@gmail.com', '$2y$10$JcMvHuorV1D5J9lNHV7dD.NXtiobcGCyHQvudbn9CNnsQvSS4Qbf.', '55649754812', 'F', '(85)534832837', 'Inglês técnico', '../user/barbie.jpg'),
 (8, 'Rermeson Felipe', '2007-11-05', 'rermesonfelipe@gmail.com', '$2y$10$oylzaGUiP7fS6hL7D/Vr0uKFsbot91d2iN6.7AUlDhaQi/jn48G/S', '4649483721', 'M', NULL, 'Banco de Dados', '../user/3e03bd8848a55e7c643f42a7233895f3.jpg'),
 (9, 'Ermeson Ramos', '2007-05-18', 'ermeson18@gmail.com', '$2y$10$RCjMxDUJ1JbWbaE3v6qGhehGjdqDa7B7mB1cGbPBL13MEyvLPdHbu', '67843098750', 'M', '(85)89967453', 'JavaScript', '../user/iaitso-kot-v-sapogakh-foto-19.jpg');
 
