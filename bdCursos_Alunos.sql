@@ -3,13 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/09/2024 às 02:08
+-- Tempo de geração: 26/09/2024 às 01:33
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
-
-CREATE DATABASE IF NOT EXISTS bdCursos_Alunos;
-USE bdCursos_Alunos;
-
+-- Versão do PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -22,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `bdCursos_Alunos`
+-- Banco de dados: `bdcursos_alunos`
 --
 
 -- --------------------------------------------------------
@@ -91,6 +87,15 @@ CREATE TABLE `tb_aluno` (
 --
 -- Despejando dados para a tabela `tb_aluno`
 --
+
+INSERT INTO `tb_aluno` (`id_aluno`, `aluno_nome`, `aluno_nascimento`, `aluno_email`, `aluno_senha`, `aluno_cpf`, `aluno_genero`, `aluno_telefone`, `curso_status`, `foto_aluno`) VALUES
+(2, 'Samara', '2007-08-02', 'samara@gmail.com', '$2y$10$ZC2eRu5tak25GVY1fcuVH.wofh84oMistHTOltNZCL0lOgndkGBDS', '1234567891', 'F', '(85) 992590860', 'Em andamento', '../user/rapunzel.jpg'),
+(4, 'Pedro Lucas', '2007-03-06', 'pedrowisk@hotmail.com', '$2y$10$wahkCLO4aIjbkJJVvoStb.Ai5S/EFVNyCi8T0SO5osZDyQcqKZJd6', '38458780836', 'M', '(85)997658433', 'Finalizado', '../user/toji.jpg'),
+(5, 'Alecsander', '2007-02-08', 'aleckgogoboy@gmail.com', '', '4637438498', 'M', '(85)997654866', 'Em andamento', '66ef375033cce.jpg'),
+(7, 'Alice Martins', '2007-08-23', 'alice@gmail.com', '$2y$10$JcMvHuorV1D5J9lNHV7dD.NXtiobcGCyHQvudbn9CNnsQvSS4Qbf.', '55649754812', 'F', '(85)534832837', 'Finalizado', '../user/barbie.jpg'),
+(8, 'Rermeson Felipe', '2007-11-05', 'rermesonfelipe@gmail.com', '$2y$10$oylzaGUiP7fS6hL7D/Vr0uKFsbot91d2iN6.7AUlDhaQi/jn48G/S', '4649483721', 'M', NULL, 'Ativo', '../user/3e03bd8848a55e7c643f42a7233895f3.jpg'),
+(9, 'Ermeson Ramos', '2007-05-18', 'ermeson18@gmail.com', '$2y$10$RCjMxDUJ1JbWbaE3v6qGhehGjdqDa7B7mB1cGbPBL13MEyvLPdHbu', '67843098750', 'M', '(85)89967453', 'Finalizado', '../user/iaitso-kot-v-sapogakh-foto-19.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -113,7 +118,9 @@ CREATE TABLE `tb_caduser` (
 
 INSERT INTO `tb_caduser` (`id_caduser`, `caduser_name`, `caduser_email`, `caduser_senha`, `caduser_nascimento`, `caduser_telefone`, `caduser_identi`) VALUES
 (1, 'Hiago de Sousa Guerra', 'hiagodesousa123@gmail.com', '887722', '2007-06-26', '85992404758', 'Diretor'),
-(2, 'Jeferson', 'Jeferson@gmail.com', '$2y$10$DBJu4Dnw.Tz/7BFhEp8wFeqnKDyxbTat.jjcSNQngRZlNJtkhib9W', '2016-09-08', NULL, 'Professor');
+(2, 'Jeferson', 'Jeferson@gmail.com', '$2y$10$DBJu4Dnw.Tz/7BFhEp8wFeqnKDyxbTat.jjcSNQngRZlNJtkhib9W', '2016-09-08', NULL, 'Professor'),
+(3, 'Suelen Sales', 'suelen@gmail.com', '$2y$10$eqV6ww6ozkJ/2qmFQc0oiuahoYEFOdv.ygbdj6axTQjwHyjg2Q7G2', '0000-00-00', '(85) 993456722', ''),
+(5, 'Ana da Silva', 'ana@gmail.com', '$2y$10$9OSiHnshhY1w15YX2YOBuewJhN8mimjVeVYzxDaKHjSat7hnaQc02', '0000-00-00', '(73) 39847-3943', '');
 
 -- --------------------------------------------------------
 
@@ -125,15 +132,16 @@ CREATE TABLE `tb_curso` (
   `id_curso` int(11) NOT NULL,
   `curso_nome` varchar(45) NOT NULL,
   `curso_descricao` text NOT NULL,
-  `curso_duracao` int(11) NOT NULL
+  `curso_duracao` int(11) NOT NULL,
+  `area_conhecimento` varchar(220) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `tb_curso`
 --
 
-INSERT INTO `tb_curso` (`id_curso`, `curso_nome`, `curso_descricao`, `curso_duracao`) VALUES
-(1, 'Informática', 'Um curso que visa ensinar desde o básico ao avançado', 102);
+INSERT INTO `tb_curso` (`id_curso`, `curso_nome`, `curso_descricao`, `curso_duracao`, `area_conhecimento`) VALUES
+(1, 'Informática', 'Um curso que visa ensinar desde o básico ao avançado', 102, '');
 
 -- --------------------------------------------------------
 
@@ -157,7 +165,8 @@ CREATE TABLE `tb_diretor` (
 --
 
 INSERT INTO `tb_diretor` (`id_diretor`, `nome_diretor`, `cpf_diretor`, `senha_diretor`, `genero_diretor`, `email_diretor`, `telefone_diretor`, `nasc_diretor`) VALUES
-(2, 'Francisco Alessandro', 1234567891, '$2y$10$VINTmIRWdUxkn5rX/rSbfe5jdTmix9g9q3P4ntoFBICQe0OrVX5dS', 'M', 'alessandro@gmail.com', NULL, '2024-09-26');
+(2, 'Francisco Alessandro', 1234567891, '$2y$10$VINTmIRWdUxkn5rX/rSbfe5jdTmix9g9q3P4ntoFBICQe0OrVX5dS', 'M', 'alessandro@gmail.com', NULL, '2024-09-26'),
+(4, 'Thiago', 0, '$2y$10$d27bSxZcu5P0dyTblqztSOAyVGDi2XoUORxw5FSVqAFx6h5oJkQTW', '', 'Thiago@gmail.com', NULL, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -266,13 +275,13 @@ ALTER TABLE `tb_end`
 -- AUTO_INCREMENT de tabela `tb_aluno`
 --
 ALTER TABLE `tb_aluno`
-  MODIFY `id_aluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_aluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `tb_caduser`
 --
 ALTER TABLE `tb_caduser`
-  MODIFY `id_caduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_caduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `tb_curso`
@@ -284,7 +293,7 @@ ALTER TABLE `tb_curso`
 -- AUTO_INCREMENT de tabela `tb_diretor`
 --
 ALTER TABLE `tb_diretor`
-  MODIFY `id_diretor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_diretor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `tb_end`
