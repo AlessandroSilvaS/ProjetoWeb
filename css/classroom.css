@@ -1,57 +1,80 @@
-/* Reset básico */
+
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  
+  body{
+    font-family: 'Hind' , serif;
+  }
   /* Estilo da Navbar */
   .navbar {
     display: flex;
     justify-content: space-between;
+    gap: 5px;
     align-items: center;
-    background-color: #333;
+    background-color: #275aff;
     color: #fff;
     padding: 10px;
+   
   }
-  
-  .navbar-btn {
-    background-color: #555;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  
-  .navbar-logo {
-    font-size: 1.5em;
-  }
-  
-  /* Estilo do Conteúdo Principal */
+
+  /* Navbar container */
+.navbar {
+  overflow: hidden;
+  font-family: Arial;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+.navbar a:hover {
+  transition: .3s;
+  background-color: #0036e6;
+  color: white;
+}
+/* Estilo do Conteúdo Principal */
   .main-content {
     padding: 20px;
     min-height: calc(
       100vh - 50px
     ); /* Ajusta a altura para ocupar o restante da tela, menos a navbar */
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
+    display: flex; 
+    justify-content: center;
     align-items: center; /* Centraliza verticalmente */
   }
+ 
   
   /* Estilo da Seção de Gerenciamento de Perfis */
   .profile-management {
-    width: 100%;
+    width:900px;
     max-width: 1200px; /* Limita a largura máxima da seção */
     padding: 20px;
     background-color: #f4f4f4; /* Fundo da seção para destacar */
     border: 1px solid #ddd; /* Borda ao redor da seção */
     border-radius: 5px; /* Bordas arredondadas */
+    
   }
   
+  section {
+    display: flex;
+    justify-content: center;
+  }
   .profile-management h1 {
     font-size: 1.8em;
     margin-bottom: 20px;
     text-align: center; /* Centraliza o título */
+    color:#275aff;
   }
   
   .table-container {
@@ -60,7 +83,7 @@
   }
   
   .profile-table {
-    width: 100%;
+    width: 850px;
     border-collapse: collapse;
     max-width: 1000px; /* Limita a largura máxima da tabela */
   }
@@ -68,12 +91,13 @@
   .profile-table th,
   .profile-table td {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
   }
   
   .profile-table th {
-    background-color: #f4f4f4;
+    background-color: rgb(39, 90, 255);
+    color: white;
   }
   
   .profile-table img {
@@ -81,17 +105,37 @@
     height: 50px;
     border-radius: 50%;
   }
-  
-  .profile-table a {
-    color: #007bff;
+  .btn-group{
+    display: flex;
+    gap: 5px;
+  }
+  .profile-table a{
+    color:white;
     text-decoration: none;
+    padding: 5px 8px;
+    border-radius: 5px;
   }
-  
-  .profile-table a:hover {
-    text-decoration: underline;
+
+  .a1{
+    background-color: rgb(0, 182, 0);
   }
-  
-  /* Adicionar espaçamento entre linhas da tabela */
+  .a1:hover{
+    transition: .5s;
+    background-color: rgb(2, 173, 2);
+  }
+ 
+  form button.a2{
+    background-color: rgb(252, 71, 71);
+    color: white;
+    padding: 9px 7px;
+    border-radius: 5px;
+    border: none;
+  }
+  form button.a2:hover{
+    transition:.5s;
+    background-color: rgb(237, 56, 56);
+  }
+
   .profile-table tbody tr {
     border-bottom: 1px solid #ddd;
   }
@@ -103,3 +147,126 @@
   .profile-table tbody tr:last-of-type {
     border-bottom: none;
   }
+
+  .animated{
+    width: 700px;
+    margin-left: 190px;
+  }
+
+.pagination {
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination .page-item {
+  display: inline-block;
+}
+
+.pagination .page-link {
+  display: inline-block;
+  padding: 2px 12px;
+  margin: 0;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+}
+
+.pagination .page-link:hover {
+  background-color: #e9ecef;
+  color: #0056b3;
+  text-decoration: none;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #6c757d;
+  background-color: #fff;
+  border-color: #dee2e6;
+  pointer-events: none;
+}
+
+.pagination .page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.pagination .page-item.disabled .page-link:hover,
+.pagination .page-item.active .page-link:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+
+.pesquisas_btn {
+  background-color: rgb(39, 90, 255);
+  border-color: rgb(39, 90, 255);
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.pesquisas_btn:hover {
+  background-color: rgb(19, 72, 247);
+  border-color: rgb(19, 72, 247);
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	display: inline-block;
+	margin: 0 10px;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
+.bi.bi-github {
+    font-size: 1.3em;
+}
+
+
+@media (max-width: 992px) {
+  img{
+    display: none;;
+  }
+}

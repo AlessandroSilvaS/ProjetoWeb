@@ -139,6 +139,34 @@
   background-color: #0056b3;
 }
 
+footer {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	display: inline-block;
+	margin: 0 10px;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
+.bi.bi-github {
+    font-size: 1.3em;
+}
+
 /* Estilo para o botão de abrir/fechar a sidebar no mobile */
 @media screen and (max-width: 768px) {
   .sidebar {
@@ -168,6 +196,5 @@
 .imageRegistration 
 {
 
-width: 750px;
-height: 900px;
+width: 700px;
 }

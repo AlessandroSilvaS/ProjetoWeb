@@ -1,4 +1,5 @@
 <?php
+    include_once "../conexao.php";
 session_start(); // Inicia a sessão para manter o estado dos menus
 
 // Verifica se o botão foi clicado para o menu principal
@@ -17,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $menuVisible = isset($_SESSION['showMenu']) && $_SESSION['showMenu'];
 $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop'];
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
