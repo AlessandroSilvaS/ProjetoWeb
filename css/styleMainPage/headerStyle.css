@@ -5,27 +5,42 @@
 }
 nav {
     width: 100%;
-    height: 150px;
+    height: 120px;
     background-color: #275aff;
     margin-bottom: 150px;
     display: flex;
     justify-content: space-between;
 }
 nav .nav-container-secondary{
-    margin: 40px;
+    padding: 10px;
+    height: 100vh;
+    background-color: #275aff;
 }
 nav .nav-container-secondary button{
     width: 80px;
-    height: 70px;
+    height: 60px;
     cursor: pointer;
     border: none;
     border-radius: 15px;
-    background-color: #3d6bff;
+    background-color: #275aff;
     color: #fff;
     transition: background-color 0.5s ease-in-out;
+    margin: 20px;
+}
+nav .nav-container-secondary button span{
+    font-size: 38px;
 }
 nav .nav-container-secondary button:hover{
     background-color: #5b80fc;
+}
+nav .nav-container-secondary .menu-list{
+    margin-left: 55px;
+}
+nav .nav-container-secondary .menu-list .icon-list{
+    list-style-type: none;
+    margin-top: 60px;
+    font-size: 28px;
+    color: #fff;
 }
 nav .nav-container-master{
     min-width: 70%;
@@ -37,7 +52,7 @@ nav .nav-container-master{
 nav .nav-container-master .container-buttons{
     margin-left: 33px;
 }
-nav .nav-container-master .container-buttons .add, .rem{
+nav .nav-container-master .container-buttons button{
     width: 120px;
     height: 80px;
     font-size: 28px;
@@ -45,13 +60,14 @@ nav .nav-container-master .container-buttons .add, .rem{
     color: #ebebeb;
     font-size: 40px;
     cursor: pointer;
+    background-color: #3d7aff;
+    margin-left: 20px;
+    border-radius: 15px;
+    transition: background-color 0.5s ease-in-out;
+    
 }
-nav .nav-container-master .container-buttons .add{
-    background-color: green;
-}
-nav .nav-container-master .container-buttons .rem{
-    background-color: red;
-    margin-left: 10px;
+nav .nav-container-master .container-buttons button:hover{
+    background-color: #5b80fc;
 }
 nav .nav-container-master .container-buttons .add .link-icon{
     color: #fff;
@@ -72,6 +88,7 @@ footer{
     background-color: black;
     text-align: center;
     margin-top: 80px;
+    position: absolute;
 }
 footer p {
     color: #fff;
