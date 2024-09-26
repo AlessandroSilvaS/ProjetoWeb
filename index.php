@@ -34,16 +34,28 @@
                 <button class="menu">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
+                <ul class="menu-list">
+                        <li class="icon-list"><span class="material-symbols-outlined">
+                            favorite
+                        </span></li>
+                        <li class="icon-list"><span class="material-symbols-outlined">
+                            favorite
+                        </span></li>
+                        <li class="icon-list"><span class="material-symbols-outlined">
+                            favorite
+                        </span></li>
+                        <li class="icon-list"><span class="material-symbols-outlined">
+                            favorite
+                        </span></li>
+                        <li class="icon-list"><span class="material-symbols-outlined">
+                            favorite
+                        </span></li>
+                        <li class="icon-list"><span class="material-symbols-outlined">
+                            favorite
+                        </span></li>
+                    </ul>
             </div>
         </nav>
-        <!-- <div class="show-Container">
-            <div class="show-link">
-                <a href="/pages/classroom.php">Sala de aula</a>
-            </div>
-            <div class="show-link"></div>
-            <div class="show-link"></div>
-        </div> -->
-        <!-- Section-->
         <section class="py-5">
             <div class="cards-main-container">
                <!-- <div class="card-course">
@@ -61,9 +73,9 @@
             </div>
         </section>
         <!-- Footer-->
-        <footer>
+        <!-- <footer>
             <p class="m-0 text-center text-white">&copy; Feito para projeto de programação web.</p>
-        </footer>
+        </footer> -->
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
