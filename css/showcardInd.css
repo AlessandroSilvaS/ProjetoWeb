@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.cabecalho{
+    width: 100%;
+    height: 120px;
+    background-color: #275aff;
+    text-align: center ;
+    margin-bottom: 100px;
+}
+.cabecalho h1{
+    padding: 30px;
+    font-size: 36px;
+    color: #fff;
+}
+form{
+    width: 500px;
+    height: 590px;
+    margin: 0 auto;
+    border: 1px solid #000;
+    border-radius: 5px;
+    text-align: center;
+}
+form label{
+    font-size: 32px;
+}
+form #descricao{
+    height: 120px;
+}
+form #nome, #carga_horaria{
+    width: 400px;
+    height: 25px;
+}
+form #salvar{
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #275aff;
+    cursor: pointer;
+}

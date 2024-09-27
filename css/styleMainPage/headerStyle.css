@@ -13,34 +13,49 @@ nav {
 }
 nav .nav-container-secondary{
     padding: 10px;
+    width: 150px;
     height: 100vh;
     background-color: #275aff;
+    transition: width 0.5s ease-in-out;
+    z-index: 1;
+}
+nav .nav-container-secondary:hover{
+    width: 450px;
+}
+nav .nav-container-secondary:hover .menu-list .icon-list .category-button{
+    opacity: 1;
 }
 nav .nav-container-secondary button{
     width: 80px;
     height: 60px;
-    cursor: pointer;
     border: none;
     border-radius: 15px;
     background-color: #275aff;
     color: #fff;
-    transition: background-color 0.5s ease-in-out;
     margin: 20px;
 }
 nav .nav-container-secondary button span{
     font-size: 38px;
 }
-nav .nav-container-secondary button:hover{
-    background-color: #5b80fc;
-}
 nav .nav-container-secondary .menu-list{
     margin-left: 55px;
 }
-nav .nav-container-secondary .menu-list .icon-list{
+nav .nav-container-secondary .menu-list .icon-list {
     list-style-type: none;
     margin-top: 60px;
-    font-size: 28px;
+    font-size: 40px;
     color: #fff;
+    display: flex;
+    align-items: center;
+}
+nav .nav-container-secondary .menu-list .icon-list span{
+    font-size: 40px;
+}
+nav .nav-container-secondary .menu-list .icon-list .category-button{
+   opacity: 0;
+   font-size: 20px;
+   cursor: pointer;
+   transition: opacity 0.9s ease-in-out;
 }
 nav .nav-container-master{
     min-width: 70%;
