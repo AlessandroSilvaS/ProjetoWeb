@@ -4,7 +4,7 @@
     $host="localhost";
     $user="root";
     $pass="";
-    $dbname="bdcursos_alunos.sql";
+    $dbname="bdcursos_alunos";
 
     //Conexão da escola
 

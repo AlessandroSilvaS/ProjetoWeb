@@ -1,8 +1,13 @@
 <?php
 include '../conexao.php';
 
-// Obter o ID do curso da URL
-$id_curso = $_GET['id'];
+// Obter o ID do curso da URL e validar
+$id_curso = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+if (!$id_curso) {
+    echo "Curso não encontrado.";
+    exit;
+}
+
 // Consultar o curso no banco de dados
 $sql = "SELECT * FROM tb_curso WHERE id_curso = :id";
 $stmt = $conn->prepare($sql);
@@ -51,7 +56,7 @@ if (!$curso) {
             display: flex;
             gap: 20px;
         }
-        .curso-info button{
+        .curso-info button {
             width: 100px;
             height: 50px;
             border-radius: 15px;
@@ -68,23 +73,19 @@ if (!$curso) {
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
         .grid-header {
             font-weight: bold;
             background-color: #e0e0e0;
             padding: 10px;
             text-align: center;
         }
-
         .grid-item {
             padding: 10px;
             border-bottom: 1px solid #ddd;
         }
-
         .grid-item:nth-child(3n) {
             border-right: 0;
         }
-
         .grid-item:last-child {
             border-bottom: 0;
         }
@@ -96,25 +97,22 @@ if (!$curso) {
     </header>
     <h1 style="text-align: center; margin-top: 40px;"><?php echo htmlspecialchars($curso['curso_nome']); ?></h1>
     <div class="curso-info">
-       
         <div class="grid-container">
             <div class="grid-header">Curso</div>
             <div class="grid-header">Descrição</div>
-            <div class="grid-header">Carga horário</div>
+            <div class="grid-header">Carga Horária</div>
 
             <div class="grid-item"><?php echo htmlspecialchars($curso['curso_nome']); ?></div>
             <div class="grid-item"><?php echo htmlspecialchars($curso['curso_descricao']); ?></div>
             <div class="grid-item"><?php echo htmlspecialchars($curso['curso_duracao']); ?></div>
-            <button id="edit" onclick="toEdit()" >EDITAR</button>
+            <button id="edit" onclick="toEdit()">EDITAR</button>
         </div>
-
-        
-        
     </div>
     <script>
-            function toEdit(){
-                window.location.href = "../index.php?id=`${$id_curso}`"
-            }
-        </script>
+        function toEdit() {
+            const idCurso = <?php echo $id_curso; ?>; // Obtém o ID do curso corretamente
+            window.location.href = "edit.php?id=" + idCurso;
+        }
+    </script>
 </body>
 </html>

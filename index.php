@@ -43,27 +43,27 @@
                     </li>
                     <li class="icon-list">
                         <i class="bi bi-cpu"></i>
-                        <button class="category-button">TECNOLOGIA</button>
+                        <button class="category-button" id="tecnologia-button" >TECNOLOGIA</button>
                     </li>
                     <li class="icon-list"><span class="material-symbols-outlined">
                         monitor_heart
                         </span>
-                        <button class="category-button">SAÚDE</button>
+                        <button class="category-button" id="saude-button" >SAÚDE</button>
                     </li>
                     <li class="icon-list"><span class="material-symbols-outlined">
                             dictionary
                         </span>
-                        <button class="category-button">EDUCAÇÃO</button>
+                        <button class="category-button" id="educa-button">EDUCAÇÃO</button>
                     </li>
                         <li class="icon-list"><span class="material-symbols-outlined">
                             attach_money
                         </span>
-                        <button class="category-button">NEGÓCIOS</button>
+                        <button class="category-button" id="nego-button">NEGÓCIOS</button>
                     </li>
                         <li class="icon-list"><span class="material-symbols-outlined">
                             calculate
                         </span>
-                        <button class="category-button">EXATAS</button>
+                        <button class="category-button" id="exa-button">EXATAS</button>
                     </li>
                     </ul>
             </div>
