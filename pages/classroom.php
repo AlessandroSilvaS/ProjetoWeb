@@ -11,14 +11,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'tb_caduser') {
 
 $professor_id = $_SESSION['user_id'];
 
-$sel = "SELECT * FROM tb_caduser";
-
-$resultado = $conn->prepare($sel);
-$resultado->execute();
-$contador = $resultado->rowCount();
-
-if ($contador > 0) {
-    while ($show = $resultado->fetch(PDO::FETCH_OBJ)) {
 
 ?>
 
@@ -44,14 +36,23 @@ if ($contador > 0) {
 
         </div>
     </nav>
+<?php
 
+$sel = "SELECT * FROM tb_caduser WHERE id_caduser = $professor_id";
+
+$resultado = $conn->prepare($sel);
+$resultado->execute();
+$contador = $resultado->rowCount();
+
+if ($contador > 0) {
+    while ($show = $resultado->fetch(PDO::FETCH_OBJ)) {?>
     <!-- Conteúdo Principal -->
     <main class="main-content">
         <section>
             <div class="user">
                 <img src="../images/user.jpeg" alt="">
                 <h1><?php echo htmlspecialchars($show->caduser_name)?></h1>
-                <p>Email: professor_id@example.com</p>
+                <p><?php echo htmlspecialchars($show->caduser_email)?></p>
                 <button type="button" class="a1" >Editar</button>
                 <?php
                             }
