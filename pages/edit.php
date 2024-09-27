@@ -44,7 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(4, $id, PDO::PARAM_INT);
 
     if ($stmt->execute()) {
-        header("../index.php");
+        header("Location: ./showCorseInd.php?id=".$id);
+        exit;
     } else {
         echo "Erro ao atualizar o curso: " . $conn->errorInfo()[2];
     }
@@ -56,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Editar Curso</title>
-    <link rel="stylesheet" href="../css/showcardind.css"/>
+    <link rel="stylesheet" href="../css/edit.css"/>
 </head>
 <body>
     <div class="cabecalho">

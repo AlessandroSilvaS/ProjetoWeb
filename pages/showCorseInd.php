@@ -43,12 +43,29 @@ if (!$curso) {
             height: 100px;
             background-color: #275aff;
             display: flex;
-            justify-content: center;
             align-items: center;
         }
         header h1 {
             color: #fff;
             font-size: 40px;
+        }
+        header .header-components{
+            display: flex;
+            width: 60%;
+            justify-content: space-between;
+        }
+        header .header-components #back{
+            width: 100px;
+            height: 50px;
+            font-size: 28px;
+            border: none;
+            color: #ebebeb;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #3d7aff;
+            margin-left: 20px;
+            border-radius: 15px;
+            transition: background-color 0.5s ease-in-out;
         }
         .curso-info {
             width: 900px;
@@ -94,7 +111,10 @@ if (!$curso) {
 </head>
 <body>
     <header>
-        <h1>Informações do Curso</h1>
+        <div class="header-components">
+            <button id="back" onclick="toBack ()">VOLTAR</button>
+            <h1>Informações do Curso</h1>
+        </div>
     </header>
     <h1 style="text-align: center; margin-top: 40px;"><?php echo htmlspecialchars($curso['curso_nome']); ?></h1>
     <div class="curso-info">
@@ -106,13 +126,17 @@ if (!$curso) {
             <div class="grid-item"><?php echo htmlspecialchars($curso['curso_nome']); ?></div>
             <div class="grid-item"><?php echo htmlspecialchars($curso['curso_descricao']); ?></div>
             <div class="grid-item"><?php echo htmlspecialchars($curso['curso_duracao']); ?></div>
-            <button id="edit" onclick="toEdit()">EDITAR</button>
+            <button id="edit" onclick="toEdit()">EDITAR</button>    
         </div>
     </div>
     <script>
         function toEdit() {
-            const idCurso = <?php echo $id_curso; ?>; // Obtém o ID do curso corretamente
+            const idCurso = <?php echo $id_curso; ?>; 
             window.location.href = "edit.php?id=" + idCurso;
+        }
+
+        function toBack(){
+            window.location.href = "../index.php";
         }
     </script>
 </body>
