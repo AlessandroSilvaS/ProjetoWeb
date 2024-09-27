@@ -50,10 +50,10 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
   <aside class="sidebar">
     <!-- Menu Lateral -->
   
-<div class="menu">
+<div class="menuD">
     <details>
         <summary>Título 1</summary>
-        <div class="content">
+        <div class="contentM">
             <p>SubTítulo 1</p>
             <p>SubTítulo 2</p>
             <p>SubTítulo 3</p>
@@ -62,7 +62,43 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
     </details>
     <details>
         <summary>Título 2</summary>
-        <div class="content">
+        <div class="contentM">
+            <p>SubTítulo 1</p>
+            <p>SubTítulo 2</p>
+            <p>SubTítulo 3</p>
+            <p>SubTítulo 4</p>
+        </div>
+    </details>
+    <details>
+        <summary>Título 3</summary>
+        <div class="contentM">
+            <p>SubTítulo 1</p>
+            <p>SubTítulo 2</p>
+            <p>SubTítulo 3</p>
+            <p>SubTítulo 4</p>
+        </div>
+    </details>
+    <details>
+        <summary>Título 4</summary>
+        <div class="contentM">
+            <p>SubTítulo 1</p>
+            <p>SubTítulo 2</p>
+            <p>SubTítulo 3</p>
+            <p>SubTítulo 4</p>
+        </div>
+    </details>
+    <details>
+        <summary>Título 5</summary>
+        <div class="contentM">
+            <p>SubTítulo 1</p>
+            <p>SubTítulo 2</p>
+            <p>SubTítulo 3</p>
+            <p>SubTítulo 4</p>
+        </div>
+    </details>
+    <details>
+        <summary>Título 6</summary>
+        <div class="contentM">
             <p>SubTítulo 1</p>
             <p>SubTítulo 2</p>
             <p>SubTítulo 3</p>
