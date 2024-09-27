@@ -7,19 +7,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Verifica em cada tabela se o usuário existe
+    // Definição correta das tabelas e campos
     $tables = [
-        'tb_aluno' => ['email_aluno' => 'aluno_email', 'senha_aluno' => 'aluno_senha'],
-        'tb_caduser' => ['email_user' => 'caduser_email', 'senha_aluno' => 'caduser_senha'],
-        'tb_diretor' => ['email_diretor' => 'email_diretor', 'senha_diretor' => 'senha_diretor']
+        'tb_aluno' => ['email' => 'aluno_email', 'senha' => 'aluno_senha', 'id' => 'id_aluno'],
+        'tb_caduser' => ['email' => 'caduser_email', 'senha' => 'caduser_senha', 'id' => 'id_caduser'],
+        'tb_diretor' => ['email' => 'email_diretor', 'senha' => 'senha_diretor', 'id' => 'id_diretor']
     ];
-    $role = null;
+    
+    $role = null; // Variável para armazenar o tipo de usuário logado
 
     foreach ($tables as $table => $fields) {
-        // Ajuste os campos conforme as tabelas
-        $emailField = $fields['email_aluno'] ?? $fields['email_user'] ?? $fields['email_diretor'];
-        $senhaField = $fields['senha_aluno'] ?? $fields['caduser_senha'] ?? $fields['senha_diretor'];
+        // Ajuste correto dos campos de email e senha para cada tabela
+        $emailField = $fields['email'];
+        $senhaField = $fields['senha'];
+        $idField = $fields['id'];
 
+        // Prepara e executa a consulta para cada tabela
         $stmt = $conn->prepare("SELECT * FROM $table WHERE $emailField = :username");
         $stmt->bindParam(':username', $username);
         $stmt->execute();
@@ -27,10 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user[$senhaField])) {
-            $_SESSION['user_id'] = $user['id']; 
-            $_SESSION['role'] = $table;
-            $role = $table;
-            break; 
+            // Atribui o ID corretamente com base no tipo de usuário
+            $_SESSION['user_id'] = $user[$idField];
+            $_SESSION['role'] = $table; // Define a tabela como o papel do usuário
+            $role = $table; // Define o papel atual
+            break;
         }
     }
 
@@ -38,20 +42,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($role) {
         switch ($role) {
             case 'tb_aluno':
-                header('Location: informationStudent.php');
-                break;
+                header('Location: informationStudent.php'); // Página do aluno
+                exit;
             case 'tb_caduser':
-                header('Location: classroom.php');
-                break;
+                header('Location: classroom.php'); // Redireciona para a página do professor
+                exit;
             case 'tb_diretor':
-                header('Location: ../index.php');
-                break;
+                header('Location: ../index.php'); // Página do diretor
+                exit;
         }
-        exit;
-    } 
+    } else {
+        // Se as credenciais estiverem erradas
+        $error = "Usuário ou Senha inválido!";
+    }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
@@ -80,12 +85,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p>Não tem conta? <a href="cadastro.php">Cadastre-se</a></p>
                 </div>
             </form>
+            
             <?php
-                // Exibe a mensagem de erro dentro do formulário se o login falhar
-                if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$role) {
-                    echo '<div style="display:flex; justify-content:space-between; margin-top: 15px;" class="alert alert-primary" role="alert">Usuário ou Senha inválido! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
-                }
-                ?>
+            if (isset($error)) {
+                echo '<div style="margin-top: 15px;" class="alert alert-danger" role="alert">' . $error . '</div>';
+            }
+            ?>
         </div>
     </div>
 </body>
