@@ -1,7 +1,7 @@
 async function getDatas(){
     try {
         // Faz a requisição para index.php
-        const response = await fetch("pages/dataCourse.php");
+        const response = await fetch("pages/dataCourse.php")
 
         // Verifica se a resposta foi bem-sucedida
         if (!response.ok) {
@@ -10,6 +10,8 @@ async function getDatas(){
 
         // Converte a resposta para JSON
         const data = await response.json();
+
+        console.log(data)
 
         //Verifica se os dados são válidos
         if (!Array.isArray(data)) {

@@ -1,9 +1,17 @@
 <?php
 
+    //Comexão de casa
     $host="localhost";
-    $user ="root";
-    $pass ="bdjmf";
-    $dbname = "bdCursos_Alunos";
+    $user="root";
+    $pass="";
+    $dbname="bdcursos_alunos.sql";
+
+    //Conexão da escola
+
+    // $host="localhost";
+    // $user ="root";
+    // $pass ="bdjmf";
+    // $dbname = "bdCursos_Alunos";
 
     try {
         // Conectar ao banco de dados com a string de conexão correta

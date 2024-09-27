@@ -31,28 +31,40 @@
                 <h1>Bem vindo(a) Diretor(a)!</h1>
             </div>
             <div class="nav-container-secondary">
-                <button class="menu">
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
+                <!-- <button class="menu">
+                    <span class="material-symbols-outlined"></span>
+                </button> -->
                 <ul class="menu-list">
+                    <li class="icon-list">
+                        <span class="material-symbols-outlined">
+                            apps
+                        </span>
+                        <button class="category-button">TODOS</button>
+                    </li>
+                    <li class="icon-list">
+                        <i class="bi bi-cpu"></i>
+                        <button class="category-button">TECNOLOGIA</button>
+                    </li>
+                    <li class="icon-list"><span class="material-symbols-outlined">
+                        monitor_heart
+                        </span>
+                        <button class="category-button">SAÚDE</button>
+                    </li>
+                    <li class="icon-list"><span class="material-symbols-outlined">
+                            dictionary
+                        </span>
+                        <button class="category-button">EDUCAÇÃO</button>
+                    </li>
                         <li class="icon-list"><span class="material-symbols-outlined">
-                            favorite
-                        </span></li>
+                            attach_money
+                        </span>
+                        <button class="category-button">NEGÓCIOS</button>
+                    </li>
                         <li class="icon-list"><span class="material-symbols-outlined">
-                            favorite
-                        </span></li>
-                        <li class="icon-list"><span class="material-symbols-outlined">
-                            favorite
-                        </span></li>
-                        <li class="icon-list"><span class="material-symbols-outlined">
-                            favorite
-                        </span></li>
-                        <li class="icon-list"><span class="material-symbols-outlined">
-                            favorite
-                        </span></li>
-                        <li class="icon-list"><span class="material-symbols-outlined">
-                            favorite
-                        </span></li>
+                            calculate
+                        </span>
+                        <button class="category-button">EXATAS</button>
+                    </li>
                     </ul>
             </div>
         </nav>
