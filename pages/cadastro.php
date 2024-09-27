@@ -18,7 +18,9 @@ include_once "../includes/bootstrap.php";
         </div>
         <div class="container-main">
             <form method="post">
-                
+     
+                <input class="form-control" name="foto" id="foto" type="file" id="formFileMultiple" multiple>
+
                 <label for="username" class="main-label">Nome Usuário:</label>
                 <input type="text" name="username" class="form-control" placeholder="Ana da Silva." required>
                 
@@ -51,6 +53,46 @@ include_once "../includes/bootstrap.php";
                 $email = $_POST['email'];
                 $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
                 $phone = $_POST['phone'];
+
+
+            if (!empty($_FILES['foto']['name'])) {
+                $formatosPermitidos = array("png", "jpg", "jpeg", "gif"); // Formatos permitidos
+                $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION); // Obtém a extensão do arquivo
+
+                // Verifica se a extensão do arquivo está nos formatos permitidos
+                if (in_array(strtolower($extensao), $formatosPermitidos)) {
+                    $pasta = "img/"; // Define o diretório para upload
+                    $temporario = $_FILES['foto']['tmp_name']; // Caminho temporário do arquivo
+                    $novoNome = uniqid() . ".$extensao"; // Gera um nome único para o arquivo
+
+                    // Move o arquivo para o diretório de imagens
+                    if (move_uploaded_file($temporario, $pasta . $novoNome)) {
+                        // Sucesso no upload da imagem
+                    } else {
+                        echo '<div class="container">
+                                <div class="alert alert-danger alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    <h5><i class="icon fas fa-exclamation-triangle"></i> Erro!</h5>
+                                    Não foi possível fazer o upload do arquivo.
+                                </div>
+                            </div>';
+                        exit(); // Termina a execução do script após o erro
+                    }
+                } else {
+                    echo '<div class="container">
+                            <div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <h5><i class="icon fas fa-exclamation-triangle"></i> Formato Inválido!</h5>
+                                Formato de arquivo não permitido.
+                            </div>
+                        </div>';
+                    exit(); // Termina a execução do script após o erro
+                }
+            } else {
+                // Define um avatar padrão caso não seja enviado nenhum arquivo de foto
+                $novoNome = 'avatar-padrao.png'; // Nome do arquivo de avatar padrão
+            }
+
             
                 try {
                     // Inicia uma transação

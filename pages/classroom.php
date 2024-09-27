@@ -10,6 +10,16 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'tb_caduser') {
 }
 
 $professor_id = $_SESSION['user_id'];
+
+$sel = "SELECT * FROM tb_caduser";
+
+$resultado = $conn->prepare($sel);
+$resultado->execute();
+$contador = $resultado->rowCount();
+
+if ($contador > 0) {
+    while ($show = $resultado->fetch(PDO::FETCH_OBJ)) {
+
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +41,7 @@ $professor_id = $_SESSION['user_id'];
         </div>
         <div class="navbar-logo">
             <img src="../assets/logo.png" alt="logo" width="50px" style="border-radius:50px; margin-right:20px; margin-top: 5px;">
+
         </div>
     </nav>
 
@@ -39,6 +50,15 @@ $professor_id = $_SESSION['user_id'];
         <section>
             <div class="user">
                 <img src="../images/user.jpeg" alt="">
+                <h1><?php echo htmlspecialchars($show->caduser_name)?></h1>
+                <p>Email: professor_id@example.com</p>
+                <button type="button" class="a1" >Editar</button>
+                <?php
+                            }
+                        } else {
+                            echo "<tr><td colspan='6'>Nenhum Usuário encontrado.</td></tr>";
+                        }
+                        ?>
             </div>
             <div class="profile-management">
                 <h1>Gerenciamento de Alunos</h1>
