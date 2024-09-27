@@ -81,7 +81,7 @@ function showCardsCourse(valores) {
         footerCard.appendChild(footerLink); // Anexa o footerLink ao footerCard
         card.appendChild(footerCard);
 
-        // Anexa o card ao container
+        // Anexa o card ao containerINSERT INTO tb_curso(curso_nome, curso_descricao, curso_duracao, area_conhecimento) VALUES ("Técnico em informática", "Um curos que ensina os principais conceitos de tecnologia", 200, "Tecnologia");
         cardsContainer.appendChild(card);
     });
 }
