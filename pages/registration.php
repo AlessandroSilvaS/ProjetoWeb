@@ -35,26 +35,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Hash da senha
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+        // Tipos de imagens permitidas
+        $tiposPermitidos = ['jpg', 'jpeg', 'png', 'gif'];
+        $foto = 'foto_padrao.jpg'; // Caminho para a foto padrão
+
         // Processa o upload da imagem
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-            $fileTmpPath = $_FILES['image']['tmp_name'];
-            $fileName = $_FILES['image']['name'];
-            $uploadFileDir = '../user/'; // Diretório onde as imagens serão salvas
-            $dest_path = $uploadFileDir . basename($fileName);
+            $extensao = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            if (in_array(strtolower($extensao), $tiposPermitidos)) {
+                $fileTmpPath = $_FILES['image']['tmp_name'];
+                $fileName = $_FILES['image']['name'];
+                $uploadFileDir = '../user/';
+                $dest_path = $uploadFileDir . basename($fileName);
 
-            // Move o arquivo para o diretório de destino
-            if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                // Prepara a consulta SQL para inserir os dados
-                $stmt = $conn->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_nascimento, aluno_email, aluno_senha, aluno_cpf, aluno_genero, curso_status, foto_aluno) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                $stmt->execute([$name, $nasc, $email, $hashedPassword, $gender, $cpf, 'Em andamento', $fileName]);
-
-                echo "Aluno cadastrado com sucesso!";
+                if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                    $foto = $fileName; // Se a imagem foi enviada
+                } else {
+                    echo "Erro ao enviar o arquivo.";
+                    exit;
+                }
             } else {
-                echo "Erro ao enviar o arquivo.";
+                echo "Tipo de imagem não permitido. Apenas JPG, JPEG, PNG e GIF são aceitos.";
+                exit;
             }
-        } else {
-            echo "Nenhuma imagem foi enviada ou ocorreu um erro no upload.";
         }
+
+        // Prepara a consulta SQL para inserir os dados
+        $stmt = $conn->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_nascimento, aluno_email, aluno_senha, aluno_cpf, aluno_genero, curso_status, foto_aluno) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$name, $nasc, $email, $hashedPassword, $gender, $cpf, 'Em andamento', $foto]);
+
+        echo "Aluno cadastrado com sucesso!";
     }
 }
 
@@ -133,7 +143,7 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
                 </select>
 
                 <label for="cpf">CPF:</label>
-                <input type="text" id="cpf" name="cpf"   required oninput="aplicarMascaraCPF(event)" >
+                <input type="text" id="cpf" name="cpf" required oninput="aplicarMascaraCPF(event)">
 
                 <label for="course">Curso:</label>
                 <input type="text" id="course" name="course" required />
