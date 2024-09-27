@@ -16,7 +16,6 @@
   position: relative; /* Para posicionar o menu em relação à navbar */
 }
 
-
 .navbar-logo {
   font-size: 1.5em;
 }
@@ -30,9 +29,7 @@
   cursor: pointer;
   font-size: 16px;
   border-radius: 5px;
-
 }
-
 
 details {
   cursor: pointer;
@@ -48,7 +45,7 @@ summary {
 summary::-webkit-details-marker {
   display: none; /* Remove o marcador padrão do <summary> */
 }
-.content {
+.contentM {
   margin-top: 10px;
   padding: 10px;
   background-color: #fff;
@@ -73,7 +70,6 @@ summary::-webkit-details-marker {
   display: block; /* Menu sempre visível */
   padding: 0; /* Remove padding para fazer o menu ocupar toda a largura */
   overflow-y: auto; /* Permite rolagem vertical */
-  
 }
 
 .sidebar .menu ul {
@@ -112,7 +108,9 @@ summary::-webkit-details-marker {
 .main-content {
   margin-left: 270px; /* Deixa espaço para a sidebar */
   padding: 20px;
-  min-height: calc(100vh - 60px); /* Ajuste para ocupar o restante da tela, menos a navbar */
+  min-height: calc(
+    100vh - 60px
+  ); /* Ajuste para ocupar o restante da tela, menos a navbar */
   background-color: #fff;
 }
 
