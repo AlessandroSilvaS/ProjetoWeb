@@ -49,31 +49,27 @@ $menuDropVisible = isset($_SESSION['showMenuDrop']) && $_SESSION['showMenuDrop']
 
   <aside class="sidebar">
     <!-- Menu Lateral -->
-    <div class="menu">
-        <ul>
-            <li class="menu-item" id="item1">
-                <a href="#">01. Titulo</a>
-                <ul class="submenu">
-                    <li><a href="#">01. Subtitulo</a></li>
-                    <li><a href="#">02. Subtitulo</a></li>
-                </ul>
-            </li>
-            <li class="menu-item" id="item2">
-                <a href="#">02. Titulo</a>
-                <ul class="submenu">
-                <li><a href="#">01. Subtitulo</a></li>
-                    <li><a href="#">02. Subtitulo</a></li>
-                </ul>
-            </li>
-            <li class="menu-item" id="item2">
-                <a href="#">02. Titulo</a>
-                <ul class="submenu">
-                <li><a href="#">01. Subtitulo</a></li>
-                    <li><a href="#">02. Subtitulo</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+  
+<div class="menu">
+    <details>
+        <summary>Título 1</summary>
+        <div class="content">
+            <p>SubTítulo 1</p>
+            <p>SubTítulo 2</p>
+            <p>SubTítulo 3</p>
+            <p>SubTítulo 4</p>
+        </div>
+    </details>
+    <details>
+        <summary>Título 2</summary>
+        <div class="content">
+            <p>SubTítulo 1</p>
+            <p>SubTítulo 2</p>
+            <p>SubTítulo 3</p>
+            <p>SubTítulo 4</p>
+        </div>
+    </details>
+</div>
 </aside>
 
 

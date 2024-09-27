@@ -2,7 +2,7 @@
 
     $host="localhost";
     $user ="root";
-    $pass ="";
+    $pass ="bdjmf";
     $dbname = "bdCursos_Alunos";
 
     try {
