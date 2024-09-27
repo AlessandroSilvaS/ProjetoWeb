@@ -17,6 +17,7 @@ $stmt->execute();
 // Obter as informações do curso
 $curso = $stmt->fetch(PDO::FETCH_ASSOC);
 
+
 // Verificar se o curso existe
 if (!$curso) {
     echo "Curso não encontrado.";
