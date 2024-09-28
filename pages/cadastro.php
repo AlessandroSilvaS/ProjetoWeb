@@ -110,7 +110,7 @@ include_once "../includes/bootstrap.php";
                     // Comita a transação
                     $conn->commit();
 
-                    echo '<div "alert alert-warning" >Usuário cadastrado com sucesso!</div>';
+                    echo '<div class="alert alert-warning" role="alert">Usuário cadastrado com sucesso!</div>';
 
                 } catch (Exception $e) {
                     // Se ocorrer um erro, desfaz a transação

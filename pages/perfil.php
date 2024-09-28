@@ -60,10 +60,10 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
     // Verifica se alguma alteração foi feita
     $update = "UPDATE tb_caduser SET caduser_name = :nome, caduser_email = :email, foto_caduser = :foto";
     
-    // Criptografa a nova senha se fornecida
+   
     if (!empty($senha)) {
         $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
-        $update .= ", caduser_senha = :senha"; // Adiciona a senha na consulta
+        $update .= ", caduser_senha = :senha";
     }
 
     $update .= " WHERE id_caduser = :id_caduser";

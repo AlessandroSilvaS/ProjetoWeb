@@ -2,6 +2,14 @@
 include_once "../conexao.php";
 session_start(); // Inicia a sessão para manter o estado dos menus
 
+
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'tb_caduser') {
+    header('Location: login.php'); 
+    exit();
+}
+
+$professor_id = $_SESSION['user_id'];
+
 // Verifica se o botão foi clicado para o menu principal
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['toggleMenu'])) {
@@ -13,61 +21,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['showMenuDrop'] = !isset($_SESSION['showMenuDrop']) || !$_SESSION['showMenuDrop'];
     }
 
-    // Verifica se o formulário foi enviado
-    if (isset($_POST['name'], $_POST['email'], $_POST['age'], $_POST['gender'], $_POST['cpf'], $_POST['course'], $_POST['password'])) {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $nasc = $_POST['age'];
-        $gender = $_POST['gender'];
-        $cpf = $_POST['cpf'];
-        $course = $_POST['course'];
-        $password = $_POST['password'];
+// Verifica se o formulário foi enviado
+if (isset($_POST['name'], $_POST['email'], $_POST['age'], $_POST['gender'], $_POST['cpf'], $_POST['course'], $_POST['password'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $nasc = $_POST['age'];
+    $gender = $_POST['gender'];
+    $cpf = $_POST['cpf'];
+    $course = $_POST['course'];
+    $password = $_POST['password'];
 
-        // Formata o CPF
-        $cpfFormatado = formatarCPF($cpf);
+    // Formata o CPF
+    $cpfFormatado = formatarCPF($cpf);
 
-        // Verifica se o CPF é válido após formatação
-        if ($cpfFormatado === "CPF inválido") {
-            echo $cpfFormatado;
-            exit;
-        }
+    // Verifica se o CPF é válido após formatação
+    if ($cpfFormatado === "CPF inválido") {
+        echo $cpfFormatado;
+        exit;
+    }
 
-        // Hash da senha
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    // Hash da senha
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // Tipos de imagens permitidas
-        $tiposPermitidos = ['jpg', 'jpeg', 'png', 'gif'];
-        $foto = 'foto_padrao.jpg'; // Caminho para a foto padrão
+    // Tipos de imagens permitidas
+    $tiposPermitidos = ['jpg', 'jpeg', 'png', 'webp'];
+    $foto = '../images/user.jpeg'; // Caminho para a foto padrão
 
-        // Processa o upload da imagem
-        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-            $extensao = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-            if (in_array(strtolower($extensao), $tiposPermitidos)) {
-                $fileTmpPath = $_FILES['image']['tmp_name'];
-                $fileName = $_FILES['image']['name'];
-                $uploadFileDir = '../user/';
-                $dest_path = $uploadFileDir . basename($fileName);
+    // Processa o upload da imagem
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $extensao = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+        if (in_array(strtolower($extensao), $tiposPermitidos)) {
+            $fileTmpPath = $_FILES['image']['tmp_name'];
+            $fileName = $_FILES['image']['name'];
+            $uploadFileDir = '../user/';
+            $dest_path = $uploadFileDir . basename($fileName);
 
-                if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                    $foto = $fileName; // Se a imagem foi enviada
-                } else {
-                    echo "Erro ao enviar o arquivo.";
-                    exit;
-                }
+            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                $foto = $fileName; // Se a imagem foi enviada
             } else {
-                echo "Tipo de imagem não permitido. Apenas JPG, JPEG, PNG e GIF são aceitos.";
+                echo "Erro ao enviar o arquivo.";
                 exit;
             }
+        } else {
+            echo "Tipo de imagem não permitido. Apenas JPG, JPEG, PNG e Webp são aceitos.";
+            exit;
         }
-
-        // Prepara a consulta SQL para inserir os dados
-        $stmt = $conn->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_nascimento, aluno_email, aluno_senha, aluno_cpf, aluno_genero, curso_status, foto_aluno) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$name, $nasc, $email, $hashedPassword, $gender, $cpf, 'Em andamento', $foto]);
-
-        echo "Aluno cadastrado com sucesso!";
     }
-}
 
+    // Prepara a consulta SQL para inserir os dados
+    $stmt = $conn->prepare("INSERT INTO tb_aluno (aluno_nome, aluno_nascimento, aluno_email, aluno_senha, aluno_cpf, aluno_genero, curso_status, foto_aluno, id_professor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$name, $nasc, $email, $hashedPassword, $gender, $cpf, 'Em andamento', $foto, $professor_id]);
+
+    echo "Aluno cadastrado com sucesso!";
+}
+}
 // Função para formatar CPF
 function formatarCPF($cpf) {
     // Remove qualquer caractere que não seja número
