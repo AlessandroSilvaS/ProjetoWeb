@@ -58,11 +58,11 @@
   background-color: #f4f4f4;
   width: 400px;
   border-radius: 5px;
-  height: 400px;
+  height: 450px;
   border: 1px solid #ddd;
 }
 .user h1{
-  
+  margin-top: 20px;
   font-size: 2rem;
   font-weight: 600;
   text-align: center;
@@ -146,30 +146,6 @@
     text-decoration: none;
     padding: 5px 20px;
     border-radius: 5px;
-  }
-
-  .a1{
-    display: flex;
-    align-items: center;
-    background-color: rgb(0, 182, 0);
-  }
-  .a1:hover{
-    transition: .5s;
-    background-color: rgb(2, 173, 2);
-  }
- 
-  form button.a2{
-    display: flex;
-    justify-content: flex-end;
-    background-color: rgb(252, 71, 71);
-    color: white;
-    padding: 9px 17px;
-    border-radius: 5px;
-    border: none;
-  }
-  form button.a2:hover{
-    transition:.5s;
-    background-color: rgb(237, 56, 56);
   }
 
   .profile-table tbody tr {
@@ -298,7 +274,40 @@ a {
 .bi.bi-github {
     font-size: 1.3em;
 }
+ 
+.a1{
+  display: flex;
+  align-items: center;
+  background-color: rgb(0, 182, 0);
+}
+.a1:hover{
+  transition: .5s;
+  background-color: rgb(2, 173, 2);
+}
 
+form button.a2{
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgb(252, 71, 71);
+  color: white;
+  padding: 9px 17px;
+  border-radius: 5px;
+  border: none;
+}
+form button.a2:hover{
+  transition:.5s;
+  background-color: rgb(237, 56, 56);
+}
+.editar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0, 182, 0);
+  padding: 10px 20px;
+  width: 25%;
+  margin-left: 150px;
+  border-radius: 5px
+}
 
 @media (max-width: 992px) {
   img{

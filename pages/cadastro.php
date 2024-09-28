@@ -17,9 +17,9 @@ include_once "../includes/bootstrap.php";
             <img src="../gif/login.svg" class="login-image">
         </div>
         <div class="container-main">
-            <form method="post">
-     
-                <input class="form-control" name="foto" id="foto" type="file" id="formFileMultiple" multiple>
+            <form method="post" enctype="multipart/form-data"> <!-- enctype adicionado para permitir upload de arquivos -->
+                <label for="foto" class="main-label">Foto de Usuário:</label>
+                <input class="form-control" name="foto" id="foto" type="file" multiple>
 
                 <label for="username" class="main-label">Nome Usuário:</label>
                 <input type="text" name="username" class="form-control" placeholder="Ana da Silva." required>
@@ -39,7 +39,7 @@ include_once "../includes/bootstrap.php";
                         <label for="professor">Professor</label>
                     </div>
                     <div class="principal-school-type">
-                        <input class="form-check-input" type="checkbox"id="diretor" name="diretor" >
+                        <input class="form-check-input" type="checkbox" id="diretor" name="diretor">
                         <label for="diretor">Diretor</label>
                     </div>
                 </div>
@@ -47,116 +47,98 @@ include_once "../includes/bootstrap.php";
                 <button type="submit" class="submit-button">Cadastrar</button>
                 
             </form>
+
             <?php
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Coleta os dados do formulário
                 $nome = $_POST['username'];
                 $email = $_POST['email'];
-                $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+                $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Senha criptografada
                 $phone = $_POST['phone'];
 
+       
+                if (!empty($_FILES['foto']['name'])) {
+                    $formatosPermitidos = array("png", "jpg", "jpeg", "webp");
+                    $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
 
-            if (!empty($_FILES['foto']['name'])) {
-                $formatosPermitidos = array("png", "jpg", "jpeg", "gif"); // Formatos permitidos
-                $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION); // Obtém a extensão do arquivo
+                    if (in_array(strtolower($extensao), $formatosPermitidos)) {
+                        $pasta = "../user/"; 
+                        $temporario = $_FILES['foto']['tmp_name'];
+                        $novoNome = uniqid() . ".$extensao";
 
-                // Verifica se a extensão do arquivo está nos formatos permitidos
-                if (in_array(strtolower($extensao), $formatosPermitidos)) {
-                    $pasta = "img/"; // Define o diretório para upload
-                    $temporario = $_FILES['foto']['tmp_name']; // Caminho temporário do arquivo
-                    $novoNome = uniqid() . ".$extensao"; // Gera um nome único para o arquivo
-
-                    // Move o arquivo para o diretório de imagens
-                    if (move_uploaded_file($temporario, $pasta . $novoNome)) {
-                        // Sucesso no upload da imagem
+                        if (!move_uploaded_file($temporario, $pasta . $novoNome)) {
+                            echo '<div class="alert alert-danger">Erro no upload da imagem.</div>';
+                            exit();
+                        }
                     } else {
-                        echo '<div class="container">
-                                <div class="alert alert-danger alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <h5><i class="icon fas fa-exclamation-triangle"></i> Erro!</h5>
-                                    Não foi possível fazer o upload do arquivo.
-                                </div>
-                            </div>';
-                        exit(); // Termina a execução do script após o erro
+                        echo '<div class="alert alert-danger">Formato de arquivo inválido.</div>';
+                        exit();
                     }
                 } else {
-                    echo '<div class="container">
-                            <div class="alert alert-danger alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <h5><i class="icon fas fa-exclamation-triangle"></i> Formato Inválido!</h5>
-                                Formato de arquivo não permitido.
-                            </div>
-                        </div>';
-                    exit(); // Termina a execução do script após o erro
+                    $novoNome = '../images/user.jpeg'; 
                 }
-            } else {
-                // Define um avatar padrão caso não seja enviado nenhum arquivo de foto
-                $novoNome = 'avatar-padrao.png'; // Nome do arquivo de avatar padrão
-            }
 
-            
                 try {
-                    // Inicia uma transação
+                    // Inicia a transação
                     $conn->beginTransaction();
-            
-                   
+
+                    // Verifica se o checkbox de diretor está marcado
                     if (isset($_POST['diretor'])) {
-                        $director = "INSERT INTO tb_diretor (nome_diretor, senha_diretor, email_diretor) VALUES (:nome, :senha, :email)";
+                        $director = "INSERT INTO tb_diretor (nome_diretor, senha_diretor, email_diretor, foto_diretor) 
+                                     VALUES (:nome, :senha, :email, :foto)";
                         $cad_Director = $conn->prepare($director);
                         $cad_Director->bindParam(':nome', $nome);
                         $cad_Director->bindParam(':email', $email);
                         $cad_Director->bindParam(':senha', $senha);
+                        $cad_Director->bindParam(':foto', $novoNome);
                         $cad_Director->execute();
                     }
-            
-                    
+
+                    // Verifica se o checkbox de professor está marcado
                     if (isset($_POST['professor'])) {
-                        $usuarios = "INSERT INTO tb_caduser (caduser_name, caduser_email, caduser_senha, caduser_telefone) VALUES (:nome, :email, :senha, :phone)";
+                        $usuarios = "INSERT INTO tb_caduser (caduser_name, caduser_email, caduser_senha, caduser_telefone, foto_caduser) 
+                                     VALUES (:nome, :email, :senha, :phone, :foto)";
                         $cad_Usuarios = $conn->prepare($usuarios);
                         $cad_Usuarios->bindParam(':nome', $nome);
                         $cad_Usuarios->bindParam(':email', $email);
                         $cad_Usuarios->bindParam(':senha', $senha);
                         $cad_Usuarios->bindParam(':phone', $phone);
+                        $cad_Usuarios->bindParam(':foto', $novoNome);
                         $cad_Usuarios->execute();
                     }
-            
-                    // Se tudo ocorreu bem, comita a transação
+
+                    // Comita a transação
                     $conn->commit();
-                    
-                    echo '<div style="display:flex; justify-content:space-between;"class="alert alert-warning" role="alert">
-                        Usuário Cadastrado!
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>';
+
+                    echo '<div "alert alert-warning" >Usuário cadastrado com sucesso!</div>';
+
                 } catch (Exception $e) {
-                    // Se ocorrer um erro, reverte a transação
+                    // Se ocorrer um erro, desfaz a transação
                     $conn->rollBack();
-                    echo "<script>alert('Erro ao cadastrar: " . $e->getMessage() . "');</script>";
+                    echo '<div class="alert alert-danger">Erro ao cadastrar: ' . $e->getMessage() . '</div>';
                 }
             }
             ?>
+            
             <a href="login.php" class="login">Voltar</a>
         </div> 
     </div>
+
     <script>
         function formatPhone(input) {
-            // Remove caracteres não numéricos
             let phone = input.value.replace(/\D/g, '');
-            
-            // Limita o número a 11 dígitos
             if (phone.length > 11) {
                 phone = phone.slice(0, 11);
             }
-            
-            // Formata o número de telefone
             if (phone.length > 10) {
-                phone = phone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'); 
+                phone = phone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
             } else if (phone.length > 6) {
-                phone = phone.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3'); 
+                phone = phone.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
             } else if (phone.length > 2) {
                 phone = phone.replace(/(\d{2})(\d{0,5})/, '($1) $2');
             } else {
                 phone = phone.replace(/(\d)/, '($1');
             }
-            
             input.value = phone;
         }
     </script>

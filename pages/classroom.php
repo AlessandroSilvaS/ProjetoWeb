@@ -50,10 +50,16 @@ if ($contador > 0) {
     <main class="main-content">
         <section>
             <div class="user">
-                <img src="../images/user.jpeg" alt="">
+                
+            <?php if (!empty($show->foto_caduser) && file_exists('../user/' . $show->foto_caduser)): ?>
+                <img src="../user/<?php echo $show->foto_caduser; ?>" alt="Foto do Aluno">
+                <?php else: ?>
+                <img src="../images/user.jpeg" alt="Foto Professor" >
+                <?php endif; ?>
                 <h1><?php echo htmlspecialchars($show->caduser_name)?></h1>
-                <p><?php echo htmlspecialchars($show->caduser_email)?></p>
-                <button type="button" class="a1" >Editar</button>
+                <p><?php echo htmlspecialchars($show->caduser_email)?><br><?php echo htmlspecialchars($show->caduser_telefone)?></p>
+                
+                <a href="perfil.php?id=<?php echo htmlspecialchars($show->id_caduser); ?>" class="editar">Editar</a>
                 <?php
                             }
                         } else {
